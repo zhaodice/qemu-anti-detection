@@ -160,11 +160,15 @@ index 8755d8d..52c52b6 100644
      if (s->chn[1].type == escc_kbd) {
          s->chn[1].hs = qemu_input_handler_register((DeviceState *)(&s->chn[1]),
 diff --git a/hw/display/edid-generate.c b/hw/display/edid-generate.c
-index 2cb8196..0ac3d1b 100644
+index 2cb8196..f9b6d06 100644
 --- a/hw/display/edid-generate.c
 +++ b/hw/display/edid-generate.c
-@@ -397,7 +397,7 @@ void qemu_edid_generate(uint8_t *edid, size_t size,
-         info->vendor = "RHT";
+@@ -394,10 +394,10 @@ void qemu_edid_generate(uint8_t *edid, size_t size,
+     /* =============== set defaults  =============== */
+ 
+     if (!info->vendor || strlen(info->vendor) != 3) {
+-        info->vendor = "RHT";
++        info->vendor = "AUSU";
      }
      if (!info->name) {
 -        info->name = "QEMU Monitor";
@@ -172,6 +176,15 @@ index 2cb8196..0ac3d1b 100644
      }
      if (!info->prefx) {
          info->prefx = 1280;
+@@ -449,7 +449,7 @@ void qemu_edid_generate(uint8_t *edid, size_t size,
+     uint16_t vendor_id = ((((info->vendor[0] - '@') & 0x1f) << 10) |
+                           (((info->vendor[1] - '@') & 0x1f) <<  5) |
+                           (((info->vendor[2] - '@') & 0x1f) <<  0));
+-    uint16_t model_nr = 0x1234;
++    uint16_t model_nr = 0x8086;
+     uint32_t serial_nr = info->serial ? atoi(info->serial) : 0;
+     stw_be_p(edid +  8, vendor_id);
+     stw_le_p(edid + 10, model_nr);
 diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
 index b626199..634adfb 100644
 --- a/hw/ide/atapi.c
@@ -188,10 +201,18 @@ index b626199..634adfb 100644
          idx = 36;
      }
 diff --git a/hw/ide/core.c b/hw/ide/core.c
-index 3a5afff..fece2ae 100644
+index 3a5afff..09524d5 100644
 --- a/hw/ide/core.c
 +++ b/hw/ide/core.c
-@@ -2567,13 +2567,13 @@ int ide_init_drive(IDEState *s, BlockBackend *blk, IDEDriveKind kind,
+@@ -2560,20 +2560,20 @@ int ide_init_drive(IDEState *s, BlockBackend *blk, IDEDriveKind kind,
+         pstrcpy(s->drive_serial_str, sizeof(s->drive_serial_str), serial);
+     } else {
+         snprintf(s->drive_serial_str, sizeof(s->drive_serial_str),
+-                 "QM%05d", s->drive_serial);
++                 "AUSU%05d", s->drive_serial);
+     }
+     if (model) {
+         pstrcpy(s->drive_model_str, sizeof(s->drive_model_str), model);
      } else {
          switch (kind) {
          case IDE_CD:
