@@ -1,4 +1,4 @@
-# qemu-anti-detection
+# Qemu Anti Detection
 A patch to hide qemu itself, bypass mhyprot,EAC,nProtect / VMProtect,VProtect, Themida, Enigma Protector,Safegine Shielden
 
 # Build and install qemu:
@@ -15,3 +15,4 @@ sudo ../qemu/configure --target-list=x86_64-softmmu,x86_64-linux-user --prefix=/
 sudo make
 sudo make install
 ```
+![Screenshot_20220819_230305](https://user-images.githubusercontent.com/63996691/185649897-b7609626-ee6d-42b1-bc5e-4465cb41a19a.png)
