@@ -160,7 +160,7 @@ index 8755d8d..52c52b6 100644
      if (s->chn[1].type == escc_kbd) {
          s->chn[1].hs = qemu_input_handler_register((DeviceState *)(&s->chn[1]),
 diff --git a/hw/display/edid-generate.c b/hw/display/edid-generate.c
-index 2cb8196..70fd7f4 100644
+index 2cb8196..9457165 100644
 --- a/hw/display/edid-generate.c
 +++ b/hw/display/edid-generate.c
 @@ -394,10 +394,10 @@ void qemu_edid_generate(uint8_t *edid, size_t size,
@@ -168,11 +168,11 @@ index 2cb8196..70fd7f4 100644
  
      if (!info->vendor || strlen(info->vendor) != 3) {
 -        info->vendor = "RHT";
-+        info->vendor = "AUSU";
++        info->vendor = "DEL";
      }
      if (!info->name) {
 -        info->name = "QEMU Monitor";
-+        info->name = "AUSU Monitor";
++        info->name = "DEL Monitor";
      }
      if (!info->prefx) {
          info->prefx = 1280;
