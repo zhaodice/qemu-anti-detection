@@ -822,9 +822,18 @@ index c9f295e..add3c82 100644
      [STR_CONFIG_SUPER] = "Super speed config (usb 3.0)",
  };
 diff --git a/hw/usb/dev-wacom.c b/hw/usb/dev-wacom.c
-index 8323650..a0ba7af 100644
+index 8323650..4893c99 100644
 --- a/hw/usb/dev-wacom.c
 +++ b/hw/usb/dev-wacom.c
+@@ -64,7 +64,7 @@ enum {
+ };
+ 
+ static const USBDescStrings desc_strings = {
+-    [STR_MANUFACTURER]     = "QEMU",
++    [STR_MANUFACTURER]     = "AUSU",
+     [STR_PRODUCT]          = "Wacom PenPartner",
+     [STR_SERIALNUMBER]     = "1",
+ };
 @@ -231,7 +231,7 @@ static int usb_mouse_poll(USBWacomState *s, uint8_t *buf, int len)
  
      if (!s->mouse_grabbed) {
