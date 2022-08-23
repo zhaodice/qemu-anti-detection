@@ -185,6 +185,32 @@ index 2cb8196..9457165 100644
      uint32_t serial_nr = info->serial ? atoi(info->serial) : 0;
      stw_be_p(edid +  8, vendor_id);
      stw_le_p(edid + 10, model_nr);
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index b72c03d..362462e 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -174,7 +174,7 @@ static void pc_init1(MachineState *machine,
+     if (pcmc->smbios_defaults) {
+         MachineClass *mc = MACHINE_GET_CLASS(machine);
+         /* These values are guest ABI, do not change */
+-        smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
++        smbios_set_defaults("AUSU", "M4A88TD-M",
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+                             pcms->smbios_entry_point_type);
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 1780f79..77a090f 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -197,7 +197,7 @@ static void pc_q35_init(MachineState *machine)
+ 
+     if (pcmc->smbios_defaults) {
+         /* These values are guest ABI, do not change */
+-        smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
++        smbios_set_defaults("AUSU", "M4A88TD-M",
+                             mc->name, pcmc->smbios_legacy_mode,
+                             pcmc->smbios_uuid_encoded,
+                             pcms->smbios_entry_point_type);
 diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
 index b626199..634adfb 100644
 --- a/hw/ide/atapi.c
@@ -473,9 +499,18 @@ index b2e2bc3..4bd9edd 100644
      }
      return true;
 diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index 072686e..e4a32ce 100644
+index 072686e..3c24714 100644
 --- a/hw/scsi/scsi-disk.c
 +++ b/hw/scsi/scsi-disk.c
+@@ -2395,7 +2395,7 @@ static void scsi_realize(SCSIDevice *dev, Error **errp)
+         s->version = g_strdup(qemu_hw_version());
+     }
+     if (!s->vendor) {
+-        s->vendor = g_strdup("QEMU");
++        s->vendor = g_strdup("AUSU");
+     }
+     if (!s->device_id) {
+         if (s->serial) {
 @@ -2451,7 +2451,7 @@ static void scsi_hd_realize(SCSIDevice *dev, Error **errp)
      s->qdev.blocksize = s->qdev.conf.logical_block_size;
      s->qdev.type = TYPE_DISK;
@@ -770,6 +805,22 @@ index dca62d5..b929a5f 100644
      uc->usb_desc       = &desc;
      uc->cancel_packet  = usb_msd_cancel_io;
      uc->handle_attach  = usb_desc_attach;
+diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
+index c9f295e..add3c82 100644
+--- a/hw/usb/dev-uas.c
++++ b/hw/usb/dev-uas.c
+@@ -171,9 +171,9 @@ enum {
+ };
+ 
+ static const USBDescStrings desc_strings = {
+-    [STR_MANUFACTURER] = "QEMU",
++    [STR_MANUFACTURER] = "AUSU",
+     [STR_PRODUCT]      = "USB Attached SCSI HBA",
+-    [STR_SERIALNUMBER] = "27842",
++    [STR_SERIALNUMBER] = "33121",
+     [STR_CONFIG_HIGH]  = "High speed config (usb 2.0)",
+     [STR_CONFIG_SUPER] = "Super speed config (usb 3.0)",
+ };
 diff --git a/hw/usb/dev-wacom.c b/hw/usb/dev-wacom.c
 index 8323650..a0ba7af 100644
 --- a/hw/usb/dev-wacom.c
@@ -837,9 +888,18 @@ index fc93429..8ba2294 100644
      device_class_set_props(dc, u2f_passthru_properties);
      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
 diff --git a/hw/usb/u2f.c b/hw/usb/u2f.c
-index 5600124..682a1f2 100644
+index 5600124..b653890 100644
 --- a/hw/usb/u2f.c
 +++ b/hw/usb/u2f.c
+@@ -46,7 +46,7 @@ enum {
+ };
+ 
+ static const USBDescStrings desc_strings = {
+-    [STR_MANUFACTURER]     = "QEMU",
++    [STR_MANUFACTURER]     = "AUSU",
+     [STR_PRODUCT]          = "U2F USB key",
+     [STR_SERIALNUMBER]     = "0",
+     [STR_CONFIG]           = "U2F key config",
 @@ -322,7 +322,7 @@ static void u2f_key_class_init(ObjectClass *klass, void *data)
      DeviceClass *dc = DEVICE_CLASS(klass);
      USBDeviceClass *uc = USB_DEVICE_CLASS(klass);
