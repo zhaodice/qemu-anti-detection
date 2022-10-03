@@ -17,7 +17,7 @@ sudo make
 sudo make install
 ```
 
-QEMU Config Reference resources
+# QEMU Config Reference Resources
 ```
 <domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">
   <name>Entertainment</name>
