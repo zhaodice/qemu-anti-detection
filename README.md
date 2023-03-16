@@ -12,8 +12,8 @@ git apply qemu7.0.0.patch
 cd ..
 mkdir qemu_build
 cd qemu_build
-sudo ../qemu/configure --target-list=x86_64-softmmu,x86_64-linux-user --prefix=/usr
-sudo make
+../qemu/configure --target-list=x86_64-softmmu,x86_64-linux-user --prefix=/usr
+make
 sudo make install
 ```
 
