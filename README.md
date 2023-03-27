@@ -1,5 +1,5 @@
 # Other Project
-For Proxmox VE(PVE) Anti Detecion, see https://github.com/zhaodice/qemu-anti-detection
+For Proxmox VE(PVE) Anti Detecion, see https://github.com/zhaodice/proxmox-ve-anti-detecion
 
 # Qemu Anti Detection
 A patch to hide qemu itself, bypass mhyprot,Anti Cheat Expert(ACE),Easy Anti Cheat(EAC),nProtect GameGuard(NP) / VMProtect,VProtect, Themida, Enigma Protector,Safegine Shielden
