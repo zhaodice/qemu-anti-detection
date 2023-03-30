@@ -2,17 +2,18 @@
 For Proxmox VE(PVE) Anti Detecion, see https://github.com/zhaodice/proxmox-ve-anti-detecion
 
 # Qemu Anti Detection
- | Type | Engine | Bypass |
- | AntiChat | Mhyprot | YES   |
- | AntiChat | Anti Cheat Expert(ACE) | YES   |
- | AntiChat | Easy Anti Cheat(EAC) | YES   | 
- | AntiChat | nProtect GameGuard(NP) | YES   | 
- | AntiChat | Vanguard | NO(ERROR 1: Incorrect function error) | 
- | Encrypt | VMProtect | YES   | 
- | Encrypt | VProtect | YES   |  
- | Encrypt | Themida | YES   |  
- | Encrypt | Enigma Protector | YES   |  
- | Encrypt | Safegine Shielden | YES   |  
+ | Type       | Engine | Bypass |
+ |------------|--------|--------|
+ | AntiChat | Mhyprot | ☑️   |
+ | AntiChat | Anti Cheat Expert(ACE) | ☑️   |
+ | AntiChat | Easy Anti Cheat(EAC) | ☑️   | 
+ | AntiChat | nProtect GameGuard(NP) | ☑️   | 
+ | AntiChat | Vanguard | ‼️(ERROR 1: Incorrect function error) | 
+ | Encrypt | VMProtect | ☑️   | 
+ | Encrypt | VProtect | ☑️   |  
+ | Encrypt | Themida | ☑️   |  
+ | Encrypt | Enigma Protector | ☑️   |  
+ | Encrypt | Safegine Shielden | ☑️   |  
 
 # Build and install qemu:
 ```
