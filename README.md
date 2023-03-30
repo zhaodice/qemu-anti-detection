@@ -4,11 +4,11 @@ For Proxmox VE(PVE) Anti Detecion, see https://github.com/zhaodice/proxmox-ve-an
 # Qemu Anti Detection
  | Type       | Engine | Bypass |
  |------------|--------|--------|
- | AntiChat | Mhyprot | ☑️   |
- | AntiChat | Anti Cheat Expert(ACE) | ☑️   |
- | AntiChat | Easy Anti Cheat(EAC) | ☑️   | 
- | AntiChat | nProtect GameGuard(NP) | ☑️   | 
- | AntiChat | Vanguard | ‼️(ERROR 1: Incorrect function error) | 
+ | AntiCheat | Mhyprot | ☑️   |
+ | AntiCheat | Anti Cheat Expert(ACE) | ☑️   |
+ | AntiCheat | Easy Anti Cheat(EAC) | ☑️   | 
+ | AntiCheat | nProtect GameGuard(NP) | ☑️   | 
+ | AntiCheat | Vanguard | ‼️(ERROR 1: Incorrect function error) | 
  | Encrypt | VMProtect | ☑️   | 
  | Encrypt | VProtect | ☑️   |  
  | Encrypt | Themida | ☑️   |  
