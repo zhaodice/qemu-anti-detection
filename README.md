@@ -2,7 +2,17 @@
 For Proxmox VE(PVE) Anti Detecion, see https://github.com/zhaodice/proxmox-ve-anti-detecion
 
 # Qemu Anti Detection
-A patch to hide qemu itself, bypass mhyprot,Anti Cheat Expert(ACE),Easy Anti Cheat(EAC),nProtect GameGuard(NP) / VMProtect,VProtect, Themida, Enigma Protector,Safegine Shielden
+ | Type | Engine | Bypass |
+ | AntiChat | Mhyprot | YES   |
+ | AntiChat | Anti Cheat Expert(ACE) | YES   |
+ | AntiChat | Easy Anti Cheat(EAC) | YES   | 
+ | AntiChat | nProtect GameGuard(NP) | YES   | 
+ | AntiChat | Vanguard | NO(ERROR 1: Incorrect function error) | 
+ | Encrypt | VMProtect | YES   | 
+ | Encrypt | VProtect | YES   |  
+ | Encrypt | Themida | YES   |  
+ | Encrypt | Enigma Protector | YES   |  
+ | Encrypt | Safegine Shielden | YES   |  
 
 # Build and install qemu:
 ```
