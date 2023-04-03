@@ -114,7 +114,7 @@ index 9c1cafa..2ef3fa1 100644
      w += 6;
  
 -    tag = (model == 810) ? "1.1.10-qemu" : "1.1.6-qemu";
-+    tag = (model == 810) ? "1.1.10-ausu" : "1.1.6-ausu";
++    tag = (model == 810) ? "1.1.10-asus" : "1.1.6-asus";
      stw_p(w++, OMAP_TAG_VERSION_STR);		/* u16 tag */
      stw_p(w++, 24);				/* u16 len */
      strcpy((void *) w, "nolo");			/* char component[12] */
@@ -1021,8 +1021,8 @@ index 1a27de9..c885457 100644
 -    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
 -    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
 -    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
-+    { "ausu32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "ausu64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
 +    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
  
  #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
