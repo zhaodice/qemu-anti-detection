@@ -473,7 +473,7 @@ index 8e63028..2a5707c 100644
  {
      MachineClass *mc = MACHINE_CLASS(oc);
 -    mc->desc = "QEMU M68K Virtual Machine";
-+    mc->desc = "ASUS M68K Virtual Machine";
++    mc->desc = "ASUS M68K Real Machine";
      mc->init = virt_init;
      mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
      mc->max_cpus = 1;
