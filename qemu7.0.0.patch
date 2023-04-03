@@ -114,7 +114,7 @@ index 9c1cafa..2ef3fa1 100644
      w += 6;
  
 -    tag = (model == 810) ? "1.1.10-qemu" : "1.1.6-qemu";
-+    tag = (model == 810) ? "1.1.10-asus" : "1.1.6-asus";
++    tag = (model == 810) ? "1.1.10-ausu" : "1.1.6-ausu";
      stw_p(w++, OMAP_TAG_VERSION_STR);		/* u16 tag */
      stw_p(w++, 24);				/* u16 len */
      strcpy((void *) w, "nolo");			/* char component[12] */
@@ -127,10 +127,23 @@ index 2387401..6ac20e4 100644
  
      mc->init = sbsa_ref_init;
 -    mc->desc = "QEMU 'SBSA Reference' ARM Virtual Machine";
-+    mc->desc = "ASUS 'SBSA Reference' ARM Real Machine";
++    mc->desc = "ASUS 'SBSA Reference' ARM Virtual Machine";
      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
      mc->max_cpus = 512;
      mc->pci_allow_0_address = true;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 449fab0..926c545 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -95,7 +95,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
+ static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
+ {
+     Aml *dev = aml_device("FWCF");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
++    aml_append(dev, aml_name_decl("_HID", aml_string("ASUS0002")));
+     /* device present, functioning, decoding, not shown in UI */
+     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
 index d2e5ecd..3e91007 100644
 --- a/hw/arm/virt.c
@@ -223,6 +236,19 @@ index dcf6ece..68d7392 100644
      /* RSDT is pointed to by RSDP */
      rsdt = tables_blob->len;
      build_rsdt(tables_blob, tables->linker, table_offsets,
+diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+index a283785..f76ce66 100644
+--- a/hw/i386/fw_cfg.c
++++ b/hw/i386/fw_cfg.c
+@@ -208,7 +208,7 @@ void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
+     Aml *dev = aml_device("FWCF");
+     Aml *crs = aml_resource_template();
+ 
+-    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
++    aml_append(dev, aml_name_decl("_HID", aml_string("ASUS0002")));
+ 
+     /* device present, functioning, decoding, not shown in UI */
+     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
 index b72c03d..d5b3249 100644
 --- a/hw/i386/pc_piix.c
@@ -447,7 +473,7 @@ index 8e63028..2a5707c 100644
  {
      MachineClass *mc = MACHINE_CLASS(oc);
 -    mc->desc = "QEMU M68K Virtual Machine";
-+    mc->desc = "ASUS M68K Real Machine";
++    mc->desc = "ASUS M68K Virtual Machine";
      mc->init = virt_init;
      mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
      mc->max_cpus = 1;
@@ -995,8 +1021,8 @@ index 1a27de9..c885457 100644
 -    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
 -    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
 -    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
-+    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "ausu32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "ausu64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
 +    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
  
  #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
@@ -1028,9 +1054,18 @@ index 3a32b8d..339d860 100644
  #define PCI_DEVICE_ID_REDHAT_SERIAL      0x0002
  #define PCI_DEVICE_ID_REDHAT_SERIAL2     0x0003
 diff --git a/include/standard-headers/linux/qemu_fw_cfg.h b/include/standard-headers/linux/qemu_fw_cfg.h
-index cb93f66..adb6b82 100644
+index cb93f66..f5f97cd 100644
 --- a/include/standard-headers/linux/qemu_fw_cfg.h
 +++ b/include/standard-headers/linux/qemu_fw_cfg.h
+@@ -4,7 +4,7 @@
+ 
+ #include "standard-headers/linux/types.h"
+ 
+-#define FW_CFG_ACPI_DEVICE_ID	"QEMU0002"
++#define FW_CFG_ACPI_DEVICE_ID	"ASUS0002"
+ 
+ /* selector key values for "well-known" fw_cfg entries */
+ #define FW_CFG_SIGNATURE	0x00
 @@ -71,7 +71,7 @@ struct fw_cfg_file {
  #define FW_CFG_DMA_CTL_SELECT	0x08
  #define FW_CFG_DMA_CTL_WRITE	0x10
