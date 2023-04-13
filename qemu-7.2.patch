@@ -127,7 +127,7 @@ index 4bb444684f..db4323db8c 100644
  
      mc->init = sbsa_ref_init;
 -    mc->desc = "QEMU 'SBSA Reference' ARM Virtual Machine";
-+    mc->desc = "ASUS 'SBSA Reference' ARM Machine";
++    mc->desc = "ASUS 'SBSA Reference' ARM Real Machine";
      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
      mc->max_cpus = 512;
      mc->pci_allow_0_address = true;
