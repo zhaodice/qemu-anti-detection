@@ -1231,3 +1231,9 @@ index c3ac20ad43..f541225c38 100644
      spice_server_set_uuid(spice_server, (unsigned char *)&qemu_uuid);
  
      seamless_migration = qemu_opt_get_bool(opts, "seamless-migration", 0);
+diff --git a/roms/edk2 b/roms/edk2
+--- a/roms/edk2
++++ b/roms/edk2
+@@ -1 +1 @@
+-Subproject commit b24306f15daa2ff8510b06702114724b33895d3c
++Subproject commit b24306f15daa2ff8510b06702114724b33895d3c-dirty
