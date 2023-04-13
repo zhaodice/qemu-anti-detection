@@ -119,7 +119,7 @@ index b151113c27..20f1a96cf1 100644
      stw_p(w++, 24);				/* u16 len */
      strcpy((void *) w, "nolo");			/* char component[12] */
 diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 4bb444684f..db4323db8c 100644
+index 4bb444684f..d8b7a99fc8 100644
 --- a/hw/arm/sbsa-ref.c
 +++ b/hw/arm/sbsa-ref.c
 @@ -851,7 +851,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
@@ -145,7 +145,7 @@ index 4156111d49..b33fefbc98 100644
      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b871350856..0946a5e1e7 100644
+index b871350856..ff93bcfcf4 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
 @@ -1611,13 +1611,13 @@ static void virt_build_smbios(VirtMachineState *vms)
@@ -153,11 +153,11 @@ index b871350856..0946a5e1e7 100644
      uint8_t *smbios_tables, *smbios_anchor;
      size_t smbios_tables_len, smbios_anchor_len;
 -    const char *product = "QEMU Virtual Machine";
-+    const char *product = "ASUS Machine";
++    const char *product = "ASUS Real Machine";
  
      if (kvm_enabled()) {
 -        product = "KVM Virtual Machine";
-+        product = "ASUS Machine";
++        product = "ASUS Real Machine";
      }
  
 -    smbios_set_defaults("QEMU", product,
@@ -192,7 +192,7 @@ index 17a908c59b..4d39c99d85 100644
      if (s->chn[1].type == escc_kbd) {
          s->chn[1].hs = qemu_input_handler_register((DeviceState *)(&s->chn[1]),
 diff --git a/hw/display/edid-generate.c b/hw/display/edid-generate.c
-index 2cb819675e..5f836fdf40 100644
+index 2cb819675e..9457165040 100644
 --- a/hw/display/edid-generate.c
 +++ b/hw/display/edid-generate.c
 @@ -394,10 +394,10 @@ void qemu_edid_generate(uint8_t *edid, size_t size,
@@ -200,11 +200,11 @@ index 2cb819675e..5f836fdf40 100644
  
      if (!info->vendor || strlen(info->vendor) != 3) {
 -        info->vendor = "RHT";
-+        info->vendor = "DELL";
++        info->vendor = "DEL";
      }
      if (!info->name) {
 -        info->name = "QEMU Monitor";
-+        info->name = "DELL Monitor";
++        info->name = "DEL Monitor";
      }
      if (!info->prefx) {
          info->prefx = 1280;
@@ -482,7 +482,7 @@ index a7a244a95d..bc16b1eba8 100644
  /* ----------------------------------------------------------------- */
  
 diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index da5eafd275..cc9d84d0b2 100644
+index da5eafd275..7eae62476b 100644
 --- a/hw/m68k/virt.c
 +++ b/hw/m68k/virt.c
 @@ -301,7 +301,7 @@ static void virt_init(MachineState *machine)
@@ -490,7 +490,7 @@ index da5eafd275..cc9d84d0b2 100644
  {
      MachineClass *mc = MACHINE_CLASS(oc);
 -    mc->desc = "QEMU M68K Virtual Machine";
-+    mc->desc = "ASUS M68K Machine";
++    mc->desc = "ASUS M68K Real Machine";
      mc->init = virt_init;
      mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
      mc->max_cpus = 1;
@@ -726,9 +726,20 @@ index a6b50dbc8d..0cd1ab7d7a 100644
      uc->find_device    = usb_hub_find_device;
      uc->handle_reset   = usb_hub_handle_reset;
 diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-index 1cac1cd435..764c80ba1d 100644
+index 1cac1cd435..f9f44b43fc 100644
 --- a/hw/usb/dev-mtp.c
 +++ b/hw/usb/dev-mtp.c
+@@ -247,8 +247,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(MTPState, USB_MTP)
+ 
+ /* ----------------------------------------------------------------------- */
+ 
+-#define MTP_MANUFACTURER  "QEMU"
+-#define MTP_PRODUCT       "QEMU filesharing"
++#define MTP_MANUFACTURER  "ASUS"
++#define MTP_PRODUCT       "ASUS filesharing"
+ #define MTP_WRITE_BUF_SZ  (512 * KiB)
+ 
+ enum {
 @@ -2091,7 +2091,7 @@ static void usb_mtp_class_initfn(ObjectClass *klass, void *data)
      USBDeviceClass *uc = USB_DEVICE_CLASS(klass);
  
@@ -788,22 +799,24 @@ index 5fff487ee5..cade24c116 100644
      uc->handle_reset   = usb_net_handle_reset;
      uc->handle_control = usb_net_handle_control;
 diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
-index 63047d79cf..c784e5096c 100644
+index 63047d79cf..e7532fa361 100644
 --- a/hw/usb/dev-serial.c
 +++ b/hw/usb/dev-serial.c
-@@ -119,9 +119,9 @@ enum {
+@@ -119,10 +119,10 @@ enum {
  };
  
  static const USBDescStrings desc_strings = {
 -    [STR_MANUFACTURER]    = "QEMU",
 -    [STR_PRODUCT_SERIAL]  = "QEMU USB SERIAL",
 -    [STR_PRODUCT_BRAILLE] = "QEMU USB BAUM BRAILLE",
+-    [STR_SERIALNUMBER]    = "1",
 +    [STR_MANUFACTURER]    = "ASUS",
 +    [STR_PRODUCT_SERIAL]  = "ASUS USB SERIAL",
 +    [STR_PRODUCT_BRAILLE] = "ASUS USB BAUM BRAILLE",
-     [STR_SERIALNUMBER]    = "1",
++    [STR_SERIALNUMBER]    = "39344488",
  };
  
+ static const USBDescIface desc_iface0 = {
 @@ -666,7 +666,7 @@ static void usb_serial_class_initfn(ObjectClass *klass, void *data)
      DeviceClass *dc = DEVICE_CLASS(klass);
      USBDeviceClass *uc = USB_DEVICE_CLASS(klass);
@@ -898,18 +911,21 @@ index 5192b062d6..0d27193726 100644
      [STR_CONFIG_SUPER] = "Super speed config (usb 3.0)",
  };
 diff --git a/hw/usb/dev-wacom.c b/hw/usb/dev-wacom.c
-index 7177c17f03..46a8529556 100644
+index 7177c17f03..1333dc0573 100644
 --- a/hw/usb/dev-wacom.c
 +++ b/hw/usb/dev-wacom.c
-@@ -64,7 +64,7 @@ enum {
+@@ -64,9 +64,9 @@ enum {
  };
  
  static const USBDescStrings desc_strings = {
 -    [STR_MANUFACTURER]     = "QEMU",
 +    [STR_MANUFACTURER]     = "ASUS",
      [STR_PRODUCT]          = "Wacom PenPartner",
-     [STR_SERIALNUMBER]     = "1",
+-    [STR_SERIALNUMBER]     = "1",
++    [STR_SERIALNUMBER]     = "28846363",
  };
+ 
+ static const uint8_t qemu_wacom_hid_report_descriptor[] = {
 @@ -231,7 +231,7 @@ static int usb_mouse_poll(USBWacomState *s, uint8_t *buf, int len)
  
      if (!s->mouse_grabbed) {
@@ -947,7 +963,7 @@ index 7177c17f03..46a8529556 100644
  }
  
 diff --git a/hw/usb/u2f-emulated.c b/hw/usb/u2f-emulated.c
-index 63cceaa5fc..d3d80f321c 100644
+index 63cceaa5fc..d0ee053a55 100644
 --- a/hw/usb/u2f-emulated.c
 +++ b/hw/usb/u2f-emulated.c
 @@ -386,7 +386,7 @@ static void u2f_emulated_class_init(ObjectClass *klass, void *data)
@@ -955,12 +971,12 @@ index 63cceaa5fc..d3d80f321c 100644
      kc->unrealize = u2f_emulated_unrealize;
      kc->recv_from_guest = u2f_emulated_recv_from_guest;
 -    dc->desc = "QEMU U2F emulated key";
-+    dc->desc = "ASUS U2F key";
++    dc->desc = "ASUS U2F emulated key";
      device_class_set_props(dc, u2f_emulated_properties);
  }
  
 diff --git a/hw/usb/u2f-passthru.c b/hw/usb/u2f-passthru.c
-index fc93429c9c..ac481fc7e7 100644
+index fc93429c9c..bd680bf2b7 100644
 --- a/hw/usb/u2f-passthru.c
 +++ b/hw/usb/u2f-passthru.c
 @@ -531,7 +531,7 @@ static void u2f_passthru_class_init(ObjectClass *klass, void *data)
@@ -968,7 +984,7 @@ index fc93429c9c..ac481fc7e7 100644
      kc->unrealize = u2f_passthru_unrealize;
      kc->recv_from_guest = u2f_passthru_recv_from_guest;
 -    dc->desc = "QEMU U2F passthrough key";
-+    dc->desc = "ASUS U2F key";
++    dc->desc = "ASUS U2F passthrough key";
      dc->vmsd = &u2f_passthru_vmstate;
      device_class_set_props(dc, u2f_passthru_properties);
      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
@@ -1128,7 +1144,7 @@ index e6b6cd4815..d7b470924d 100644
  enum virtio_scsi_vq_id {
      VR_CONTROL  = 0,
 diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index a213209379..ef5ac08d96 100644
+index a213209379..e755e94775 100644
 --- a/target/i386/kvm/kvm.c
 +++ b/target/i386/kvm/kvm.c
 @@ -1800,7 +1800,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
@@ -1136,7 +1152,7 @@ index a213209379..ef5ac08d96 100644
  
      if (cpu->expose_kvm) {
 -        memcpy(signature, "KVMKVMKVM\0\0\0", 12);
-+        memcpy(signature, "AuthenticAMD", 12);
++        memcpy(signature, "GenuineIntel", 12);
          c = &cpuid_data.entries[cpuid_i++];
          c->function = KVM_CPUID_SIGNATURE | kvm_base;
          c->eax = KVM_CPUID_FEATURES | kvm_base;
