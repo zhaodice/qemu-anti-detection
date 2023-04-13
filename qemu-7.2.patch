@@ -1,12 +1,3 @@
-From eb5525a87cfa37f197eea589ebf6414b180e2ebe Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 14:45:08 +0200
-Subject: [PATCH 01/55] VDX file patch
-
----
- block/vhdx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/block/vhdx.c b/block/vhdx.c
 index bad9ca691b..02fd321b51 100644
 --- a/block/vhdx.c
@@ -20,19 +11,6 @@ index bad9ca691b..02fd321b51 100644
                                &creator_items, NULL);
      signature = cpu_to_le64(VHDX_FILE_SIGNATURE);
      ret = blk_co_pwrite(blk, VHDX_FILE_ID_OFFSET, sizeof(signature), &signature,
--- 
-2.40.0
-
-
-From a8ee74fa61b3c06be7ba7cbfb04149422976c503 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 14:46:18 +0200
-Subject: [PATCH 02/55] V-VFAT format patch
-
----
- block/vvfat.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/block/vvfat.c b/block/vvfat.c
 index 723c91216e..45e5cd19a0 100644
 --- a/block/vvfat.c
@@ -46,19 +24,6 @@ index 723c91216e..45e5cd19a0 100644
      }
  
      if (floppy) {
--- 
-2.40.0
-
-
-From f756fb897a32dc76ae98e737f24d1bf8d68b788a Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 14:48:01 +0200
-Subject: [PATCH 03/55] Virtual mouse name patch
-
----
- chardev/msmouse.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/chardev/msmouse.c b/chardev/msmouse.c
 index ab8fe981d6..bc6278ab3d 100644
 --- a/chardev/msmouse.c
@@ -72,19 +37,6 @@ index ab8fe981d6..bc6278ab3d 100644
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
      .event = msmouse_input_event,
      .sync  = msmouse_input_sync,
--- 
-2.40.0
-
-
-From d84fe217c2edb24a611b6be263518c91d366f077 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 14:48:57 +0200
-Subject: [PATCH 04/55] Virtual tablet name patch
-
----
- chardev/wctablet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/chardev/wctablet.c b/chardev/wctablet.c
 index 43bdf6b608..6067ef15e3 100644
 --- a/chardev/wctablet.c
@@ -98,19 +50,6 @@ index 43bdf6b608..6067ef15e3 100644
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
      .event = wctablet_input_event,
      .sync  = wctablet_input_sync,
--- 
-2.40.0
-
-
-From 7f8aeb064a8a4dcbbfb62f36dbc2d7e57b0bf093 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 14:50:13 +0200
-Subject: [PATCH 05/55] Virtual gpu name patch
-
----
- contrib/vhost-user-gpu/vhost-user-gpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/contrib/vhost-user-gpu/vhost-user-gpu.c b/contrib/vhost-user-gpu/vhost-user-gpu.c
 index bfb8d93cf8..b132986342 100644
 --- a/contrib/vhost-user-gpu/vhost-user-gpu.c
@@ -124,19 +63,6 @@ index bfb8d93cf8..b132986342 100644
      g_option_context_add_main_entries(context, entries, NULL);
      if (!g_option_context_parse(context, &argc, &argv, &error)) {
          g_printerr("Option parsing failed: %s\n", error->message);
--- 
-2.40.0
-
-
-From 90025e91d4658615d227f37945fd64518f6d2c9e Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 14:57:09 +0200
-Subject: [PATCH 06/55] ACPI patch
-
----
- hw/acpi/aml-build.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
 index 42feb4d4d7..348b3ff3fb 100644
 --- a/hw/acpi/aml-build.c
@@ -156,19 +82,6 @@ index 42feb4d4d7..348b3ff3fb 100644
      build_append_int_noprefix(array, 1, 4); /* Creator Revision */
  }
  
--- 
-2.40.0
-
-
-From fa0026ca6694a52b20a6c024009fc360ce584ad6 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 14:58:46 +0200
-Subject: [PATCH 07/55] N800 patch
-
----
- hw/arm/nseries.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
 index b151113c27..20f1a96cf1 100644
 --- a/hw/arm/nseries.c
@@ -205,19 +118,6 @@ index b151113c27..20f1a96cf1 100644
      stw_p(w++, OMAP_TAG_VERSION_STR);		/* u16 tag */
      stw_p(w++, 24);				/* u16 len */
      strcpy((void *) w, "nolo");			/* char component[12] */
--- 
-2.40.0
-
-
-From e66a16791d7a1a1914a9a64bbb40aa4ecb28360f Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 15:05:33 +0200
-Subject: [PATCH 08/55] SBSA name patch
-
----
- hw/arm/sbsa-ref.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
 index 4bb444684f..db4323db8c 100644
 --- a/hw/arm/sbsa-ref.c
@@ -231,19 +131,6 @@ index 4bb444684f..db4323db8c 100644
      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
      mc->max_cpus = 512;
      mc->pci_allow_0_address = true;
--- 
-2.40.0
-
-
-From 6efc217028c5ce3b021c33e720ec022b7d0d28aa Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 15:09:10 +0200
-Subject: [PATCH 09/55] Patched some more ACPI QEMU referenes
-
----
- hw/arm/virt-acpi-build.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
 index 4156111d49..b33fefbc98 100644
 --- a/hw/arm/virt-acpi-build.c
@@ -257,19 +144,6 @@ index 4156111d49..b33fefbc98 100644
      /* device present, functioning, decoding, not shown in UI */
      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
--- 
-2.40.0
-
-
-From 6b6bbc741ab929678a73c54535477992e5c575a4 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:40:11 +0200
-Subject: [PATCH 10/55] SMBIOS name patch
-
----
- hw/arm/virt.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
 index b871350856..0946a5e1e7 100644
 --- a/hw/arm/virt.c
@@ -291,19 +165,6 @@ index b871350856..0946a5e1e7 100644
                          vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
                          true, SMBIOS_ENTRY_POINT_TYPE_64);
  
--- 
-2.40.0
-
-
-From b4c18ce220023b9217688509f44f43a333d976f1 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:41:57 +0200
-Subject: [PATCH 11/55] Vendor id patch
-
----
- hw/audio/hda-codec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
 index feb8f9e2bb..13cc2119e4 100644
 --- a/hw/audio/hda-codec.c
@@ -317,19 +178,6 @@ index feb8f9e2bb..13cc2119e4 100644
  #define QEMU_HDA_PCM_FORMATS (AC_SUPPCM_BITS_16 |       \
                                0x1fc /* 16 -> 96 kHz */)
  #define QEMU_HDA_AMP_NONE    (0)
--- 
-2.40.0
-
-
-From 098ecbdbefb442797b84ab7f94b1120646e10e14 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:43:04 +0200
-Subject: [PATCH 12/55] Sun mouse name patch
-
----
- hw/char/escc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/char/escc.c b/hw/char/escc.c
 index 17a908c59b..4d39c99d85 100644
 --- a/hw/char/escc.c
@@ -343,19 +191,6 @@ index 17a908c59b..4d39c99d85 100644
      }
      if (s->chn[1].type == escc_kbd) {
          s->chn[1].hs = qemu_input_handler_register((DeviceState *)(&s->chn[1]),
--- 
-2.40.0
-
-
-From 23638954b0d0fd473246e88763a50d4859d9e9b9 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:46:12 +0200
-Subject: [PATCH 13/55] Display name patch
-
----
- hw/display/edid-generate.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/display/edid-generate.c b/hw/display/edid-generate.c
 index 2cb819675e..5f836fdf40 100644
 --- a/hw/display/edid-generate.c
@@ -382,19 +217,6 @@ index 2cb819675e..5f836fdf40 100644
      uint32_t serial_nr = info->serial ? atoi(info->serial) : 0;
      stw_be_p(edid +  8, vendor_id);
      stw_le_p(edid + 10, model_nr);
--- 
-2.40.0
-
-
-From 3dbaefc1dac64325b7dc5ca91af0a46bed997597 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:49:54 +0200
-Subject: [PATCH 14/55] Hids UEFI logoh
-
----
- hw/i386/acpi-build.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
 index d9eaa5fc4d..3502c8b411 100644
 --- a/hw/i386/acpi-build.c
@@ -414,19 +236,6 @@ index d9eaa5fc4d..3502c8b411 100644
      /* RSDT is pointed to by RSDP */
      rsdt = tables_blob->len;
      build_rsdt(tables_blob, tables->linker, table_offsets,
--- 
-2.40.0
-
-
-From 4ec6062a3c602945cd5a73a147453cf749147087 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:51:21 +0200
-Subject: [PATCH 15/55] Patching firmware name
-
----
- hw/i386/fw_cfg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
 index 72a42f3c66..154b6675d8 100644
 --- a/hw/i386/fw_cfg.c
@@ -440,19 +249,23 @@ index 72a42f3c66..154b6675d8 100644
  
      /* device present, functioning, decoding, not shown in UI */
      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
--- 
-2.40.0
-
-
-From 2c6ca6261a34f2b96ed1fd31b0a5f49bc5dd7008 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:52:44 +0200
-Subject: [PATCH 16/55] Machine name patch
-
----
- hw/i386/pc_piix.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index ec5a10534b..1c2d18b752 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -103,9 +103,9 @@
+  * depending on QEMU versions up to QEMU 2.4.
+  */
+ #define PC_CPU_MODEL_IDS(v) \
+-    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
+-    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
+-    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
++    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
+ 
+ GlobalProperty pc_compat_7_1[] = {};
+ const size_t pc_compat_7_1_len = G_N_ELEMENTS(pc_compat_7_1);
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
 index 24616bf924..cc0ae8328b 100644
 --- a/hw/i386/pc_piix.c
@@ -466,19 +279,6 @@ index 24616bf924..cc0ae8328b 100644
                              mc->name, pcmc->smbios_legacy_mode,
                              pcmc->smbios_uuid_encoded,
                              pcms->smbios_entry_point_type);
--- 
-2.40.0
-
-
-From df81b5ec89562f6bc18730b1831b1ac0f2544487 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:54:40 +0200
-Subject: [PATCH 17/55] Q35 machine name patch
-
----
- hw/i386/pc_q35.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
 index f522874add..c835b4eed7 100644
 --- a/hw/i386/pc_q35.c
@@ -496,20 +296,6 @@ index f522874add..c835b4eed7 100644
                              pcms->smbios_entry_point_type);
      }
  
--- 
-2.40.0
-
-
-From 420f5522d08ea66369bd24044f71d5ed0c34f258 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 17:59:43 +0200
-Subject: [PATCH 18/55] Storage name patch
-
----
- hw/ide/atapi.c | 4 ++--
- hw/ide/core.c  | 8 ++++----
- 2 files changed, 6 insertions(+), 6 deletions(-)
-
 diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
 index 0a9aa6f009..ad713f72f4 100644
 --- a/hw/ide/atapi.c
@@ -554,20 +340,6 @@ index 39afdc0006..62284779a0 100644
              break;
          }
      }
--- 
-2.40.0
-
-
-From 21dbb13dfb8b655353c0cdad4ac78543a18ae107 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:01:52 +0200
-Subject: [PATCH 19/55] ADB input name patch
-
----
- hw/input/adb-kbd.c   | 2 +-
- hw/input/adb-mouse.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
 index a9088c910c..336077a8c6 100644
 --- a/hw/input/adb-kbd.c
@@ -594,19 +366,6 @@ index e6b341f028..36155dfc28 100644
  }
  
  static void adb_mouse_initfn(Object *obj)
--- 
-2.40.0
-
-
-From fc4e7b86ab7862f14d2baee82778b170b3c04357 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:02:48 +0200
-Subject: [PATCH 20/55] Touchscreen name patch
-
----
- hw/input/ads7846.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/input/ads7846.c b/hw/input/ads7846.c
 index 1d4e04a2dc..34339a39a0 100644
 --- a/hw/input/ads7846.c
@@ -620,19 +379,6 @@ index 1d4e04a2dc..34339a39a0 100644
  
      ads7846_int_update(s);
  
--- 
-2.40.0
-
-
-From df52a8de104d1731358eb78d6a8d21c6723d6b84 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:04:26 +0200
-Subject: [PATCH 21/55] HID input name patch
-
----
- hw/input/hid.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/input/hid.c b/hw/input/hid.c
 index e7ecebdf8f..f4e991cc6e 100644
 --- a/hw/input/hid.c
@@ -661,19 +407,6 @@ index e7ecebdf8f..f4e991cc6e 100644
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
      .event = hid_pointer_event,
      .sync  = hid_pointer_sync,
--- 
-2.40.0
-
-
-From b1c942f815f9d0eea2d1020b93b063a178f5b07a Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:05:52 +0200
-Subject: [PATCH 22/55] PS/2 input name patch
-
----
- hw/input/ps2.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/hw/input/ps2.c b/hw/input/ps2.c
 index 05cf7111e3..f7faa17b6a 100644
 --- a/hw/input/ps2.c
@@ -696,20 +429,6 @@ index 05cf7111e3..f7faa17b6a 100644
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
      .event = ps2_mouse_event,
      .sync  = ps2_mouse_sync,
--- 
-2.40.0
-
-
-From 393f7d792db870b52da3b134e2cf6a4d0553c642 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:08:21 +0200
-Subject: [PATCH 23/55] TSC input name patch
-
----
- hw/input/tsc2005.c | 2 +-
- hw/input/tsc210x.c | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
 index 14698ce109..9a7b6ff973 100644
 --- a/hw/input/tsc2005.c
@@ -745,19 +464,6 @@ index df7313db5d..200f9524db 100644
  
      AUD_register_card(s->name, &s->card);
  
--- 
-2.40.0
-
-
-From ade16458fef63c1be63cf498e9158c7e2a726d17 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:09:52 +0200
-Subject: [PATCH 24/55] VirtIO input name patch
-
----
- hw/input/virtio-input-hid.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
 index a7a244a95d..bc16b1eba8 100644
 --- a/hw/input/virtio-input-hid.c
@@ -775,19 +481,6 @@ index a7a244a95d..bc16b1eba8 100644
  
  /* ----------------------------------------------------------------- */
  
--- 
-2.40.0
-
-
-From 8d8aa731ae0c1d9d8368e29c581946ed6c0e19a7 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:12:33 +0200
-Subject: [PATCH 25/55] PC name patch
-
----
- hw/m68k/virt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
 index da5eafd275..cc9d84d0b2 100644
 --- a/hw/m68k/virt.c
@@ -801,19 +494,6 @@ index da5eafd275..cc9d84d0b2 100644
      mc->init = virt_init;
      mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
      mc->max_cpus = 1;
--- 
-2.40.0
-
-
-From 116e53e0f5a4aee376606797dbf3e18f866362a0 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:14:30 +0200
-Subject: [PATCH 26/55] NVME storage name patch
-
----
- hw/nvme/ctrl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
 index 1d3e058452..c5ca161a11 100644
 --- a/hw/nvme/ctrl.c
@@ -827,19 +507,6 @@ index 1d3e058452..c5ca161a11 100644
      strpadcpy((char *)id->fr, sizeof(id->fr), QEMU_VERSION, ' ');
      strpadcpy((char *)id->sn, sizeof(id->sn), n->params.serial, ' ');
  
--- 
-2.40.0
-
-
-From edf603614a7ff119a09665ed3113b7be10d53799 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:18:42 +0200
-Subject: [PATCH 27/55] VRAM storage name patch
-
----
- hw/nvram/fw_cfg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
 index 371a45dfe2..42cc425d3c 100644
 --- a/hw/nvram/fw_cfg.c
@@ -853,19 +520,6 @@ index 371a45dfe2..42cc425d3c 100644
  
  struct FWCfgEntry {
      uint32_t len;
--- 
-2.40.0
-
-
-From 57478c3ec05d255c58206fec70cb13af1b4143f0 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:19:54 +0200
-Subject: [PATCH 28/55] PCI bridge name patch
-
----
- hw/pci-host/gpex.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
 index a6752fac5e..60da038741 100644
 --- a/hw/pci-host/gpex.c
@@ -879,19 +533,6 @@ index a6752fac5e..60da038741 100644
      dc->vmsd = &vmstate_gpex_root;
      k->vendor_id = PCI_VENDOR_ID_REDHAT;
      k->device_id = PCI_DEVICE_ID_REDHAT_PCIE_HOST;
--- 
-2.40.0
-
-
-From cd5df0dbf151db2473bc11206c682b20a017558f Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:20:44 +0200
-Subject: [PATCH 29/55] idk name patch
-
----
- hw/ppc/e500plat.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
 index 5bb1c603da..bc50bd4412 100644
 --- a/hw/ppc/e500plat.c
@@ -905,19 +546,6 @@ index 5bb1c603da..bc50bd4412 100644
      const char compatible[] = "fsl,qemu-e500";
  
      qemu_fdt_setprop(fdt, "/", "model", model, sizeof(model));
--- 
-2.40.0
-
-
-From 202f71bdb40f33a543468ba0e3b157307dd4d05c Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:22:43 +0200
-Subject: [PATCH 30/55] MTP name patch
-
----
- hw/scsi/mptconfig.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/hw/scsi/mptconfig.c b/hw/scsi/mptconfig.c
 index 19d01f39fa..974e0ae5a7 100644
 --- a/hw/scsi/mptconfig.c
@@ -940,20 +568,6 @@ index 19d01f39fa..974e0ae5a7 100644
  }
  
  static
--- 
-2.40.0
-
-
-From 3a2af3b9e57873aaba65584fff064f81ca52ca31 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:24:39 +0200
-Subject: [PATCH 31/55] SCSI name patch
-
----
- hw/scsi/scsi-bus.c  | 4 ++--
- hw/scsi/scsi-disk.c | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/hw/scsi/scsi-bus.c b/hw/scsi/scsi-bus.c
 index ceceafb2cd..44355e12c2 100644
 --- a/hw/scsi/scsi-bus.c
@@ -1000,19 +614,6 @@ index e493c28814..9ebd7bd3c5 100644
      }
      scsi_realize(&s->qdev, errp);
      aio_context_release(ctx);
--- 
-2.40.0
-
-
-From 28d721b8da1f9fa2bcb799fb9a40a971a6dc5c45 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:32:34 +0200
-Subject: [PATCH 32/55] V-SCSI name patch
-
----
- hw/scsi/spapr_vscsi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
 index 5bbbef64ef..031829d984 100644
 --- a/hw/scsi/spapr_vscsi.c
@@ -1028,19 +629,6 @@ index 5bbbef64ef..031829d984 100644
  
      req->writing = 0;
      vscsi_preprocess_desc(req);
--- 
-2.40.0
-
-
-From 5db9fb34f40fcddfc27ac4235e07bdf8646d9b76 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:34:52 +0200
-Subject: [PATCH 33/55] USB audio name patch
-
----
- hw/usb/dev-audio.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
 index 8748c1ba04..eacc5588e4 100644
 --- a/hw/usb/dev-audio.c
@@ -1065,19 +653,6 @@ index 8748c1ba04..eacc5588e4 100644
      k->realize        = usb_audio_realize;
      k->handle_reset   = usb_audio_handle_reset;
      k->handle_control = usb_audio_handle_control;
--- 
-2.40.0
-
-
-From 2aabd980260a0fe10d80b31ce5a166248a106b39 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:36:47 +0200
-Subject: [PATCH 34/55] USB input name patch
-
----
- hw/usb/dev-hid.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
 diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
 index bdd6d1ffaf..0351fc5c8b 100644
 --- a/hw/usb/dev-hid.c
@@ -1124,19 +699,6 @@ index bdd6d1ffaf..0351fc5c8b 100644
      dc->vmsd = &vmstate_usb_kbd;
      device_class_set_props(dc, usb_keyboard_properties);
      set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
--- 
-2.40.0
-
-
-From ff1f67ab816a6e7bab9a38534fd99355bf0bae37 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:38:11 +0200
-Subject: [PATCH 35/55] USB hub name patch
-
----
- hw/usb/dev-hub.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/hw/usb/dev-hub.c b/hw/usb/dev-hub.c
 index a6b50dbc8d..0cd1ab7d7a 100644
 --- a/hw/usb/dev-hub.c
@@ -1163,19 +725,6 @@ index a6b50dbc8d..0cd1ab7d7a 100644
      uc->usb_desc       = &desc_hub;
      uc->find_device    = usb_hub_find_device;
      uc->handle_reset   = usb_hub_handle_reset;
--- 
-2.40.0
-
-
-From c2b220243f0c80ebb518f3157bdf6ad5d7e89df7 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:39:24 +0200
-Subject: [PATCH 36/55] USB MTP name patch
-
----
- hw/usb/dev-mtp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
 index 1cac1cd435..764c80ba1d 100644
 --- a/hw/usb/dev-mtp.c
@@ -1189,19 +738,6 @@ index 1cac1cd435..764c80ba1d 100644
      uc->usb_desc       = &desc;
      uc->cancel_packet  = usb_mtp_cancel_packet;
      uc->handle_attach  = usb_desc_attach;
--- 
-2.40.0
-
-
-From 0f88dfb3469fb1bb2df335a97ec5cb9746aa2f11 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:44:57 +0200
-Subject: [PATCH 37/55] USB network names patch
-
----
- hw/usb/dev-network.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
-
 diff --git a/hw/usb/dev-network.c b/hw/usb/dev-network.c
 index 5fff487ee5..cade24c116 100644
 --- a/hw/usb/dev-network.c
@@ -1251,19 +787,6 @@ index 5fff487ee5..cade24c116 100644
      uc->usb_desc       = &desc_net;
      uc->handle_reset   = usb_net_handle_reset;
      uc->handle_control = usb_net_handle_control;
--- 
-2.40.0
-
-
-From 9200c8a1ec6445e58fae3662a9ecd8629270d9af Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:48:26 +0200
-Subject: [PATCH 38/55] USB stuff names patch
-
----
- hw/usb/dev-serial.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
 index 63047d79cf..c784e5096c 100644
 --- a/hw/usb/dev-serial.c
@@ -1299,19 +822,6 @@ index 63047d79cf..c784e5096c 100644
      uc->usb_desc       = &desc_braille;
      device_class_set_props(dc, braille_properties);
  }
--- 
-2.40.0
-
-
-From 6ba03fc1f778e61dd02f21971a95d15342126e26 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 18:52:46 +0200
-Subject: [PATCH 39/55] USB card reader name patch
-
----
- hw/usb/dev-smartcard-reader.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
 index 28164d89be..bf9b299894 100644
 --- a/hw/usb/dev-smartcard-reader.c
@@ -1347,19 +857,6 @@ index 28164d89be..bf9b299894 100644
      uc->usb_desc       = &desc_ccid;
      uc->handle_reset   = ccid_handle_reset;
      uc->handle_control = ccid_handle_control;
--- 
-2.40.0
-
-
-From 59807a9157e1f005f33bd8711ba7e6cee1b633c1 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:00:59 +0200
-Subject: [PATCH 40/55] USB drive name patch
-
----
- hw/usb/dev-storage.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
 index e3bcffb3e0..ce4e385b29 100644
 --- a/hw/usb/dev-storage.c
@@ -1384,19 +881,6 @@ index e3bcffb3e0..ce4e385b29 100644
      uc->usb_desc       = &desc;
      uc->cancel_packet  = usb_msd_cancel_io;
      uc->handle_attach  = usb_desc_attach;
--- 
-2.40.0
-
-
-From e5217c0a3b60fa34ab590001db4ebc5ba48fa9fc Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:07:49 +0200
-Subject: [PATCH 41/55] UAS name patch
-
----
- hw/usb/dev-uas.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
 index 5192b062d6..0d27193726 100644
 --- a/hw/usb/dev-uas.c
@@ -1413,19 +897,6 @@ index 5192b062d6..0d27193726 100644
      [STR_CONFIG_HIGH]  = "High speed config (usb 2.0)",
      [STR_CONFIG_SUPER] = "Super speed config (usb 3.0)",
  };
--- 
-2.40.0
-
-
-From a6cd741dbcfa644699c37d46fc946a0a508438ed Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:38:02 +0200
-Subject: [PATCH 42/55] WACOM name patch
-
----
- hw/usb/dev-wacom.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
 diff --git a/hw/usb/dev-wacom.c b/hw/usb/dev-wacom.c
 index 7177c17f03..46a8529556 100644
 --- a/hw/usb/dev-wacom.c
@@ -1475,19 +946,6 @@ index 7177c17f03..46a8529556 100644
      dc->vmsd = &vmstate_usb_wacom;
  }
  
--- 
-2.40.0
-
-
-From 5a962b21f244d551e89c10f239083a608060c830 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:40:52 +0200
-Subject: [PATCH 43/55] U2F-emu name patch
-
----
- hw/usb/u2f-emulated.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/usb/u2f-emulated.c b/hw/usb/u2f-emulated.c
 index 63cceaa5fc..d3d80f321c 100644
 --- a/hw/usb/u2f-emulated.c
@@ -1501,19 +959,6 @@ index 63cceaa5fc..d3d80f321c 100644
      device_class_set_props(dc, u2f_emulated_properties);
  }
  
--- 
-2.40.0
-
-
-From 8a7472366d525413e1752d55d35628d4e5824433 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:43:24 +0200
-Subject: [PATCH 44/55] U2F-passthru name patch
-
----
- hw/usb/u2f-passthru.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/hw/usb/u2f-passthru.c b/hw/usb/u2f-passthru.c
 index fc93429c9c..ac481fc7e7 100644
 --- a/hw/usb/u2f-passthru.c
@@ -1527,19 +972,6 @@ index fc93429c9c..ac481fc7e7 100644
      dc->vmsd = &u2f_passthru_vmstate;
      device_class_set_props(dc, u2f_passthru_properties);
      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
--- 
-2.40.0
-
-
-From 8c1d34aa8026e54d9d9235587cca344a89bc1b79 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:44:29 +0200
-Subject: [PATCH 45/55] U2F device name patch
-
----
- hw/usb/u2f.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
 diff --git a/hw/usb/u2f.c b/hw/usb/u2f.c
 index 56001249a4..76ea792988 100644
 --- a/hw/usb/u2f.c
@@ -1571,19 +1003,6 @@ index 56001249a4..76ea792988 100644
      dc->vmsd           = &vmstate_u2f_key;
  }
  
--- 
-2.40.0
-
-
-From 94ed49e60e30f2531bd522985c00048e30cdce18 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:49:11 +0200
-Subject: [PATCH 46/55] AML build name patch
-
----
- include/hw/acpi/aml-build.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
 index d1fb08514b..e0f0bb5ff0 100644
 --- a/include/hw/acpi/aml-build.h
@@ -1599,48 +1018,6 @@ index d1fb08514b..e0f0bb5ff0 100644
  
  #define ACPI_BUILD_TABLE_FILE "etc/acpi/tables"
  #define ACPI_BUILD_RSDP_FILE "etc/acpi/rsdp"
--- 
-2.40.0
-
-
-From 86c5683be99eca743925aca23c03ef3a1448469e Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 19:57:04 +0200
-Subject: [PATCH 47/55] IDK, but it may cause QEMU fail in compile-time
-
----
- include/hw/i386/pc.h | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 0c76e82626..c2b9244d01 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -287,6 +287,11 @@ extern const size_t pc_compat_1_5_len;
- extern GlobalProperty pc_compat_1_4[];
- extern const size_t pc_compat_1_4_len;
- 
-+#define PC_CPU_MODEL_IDS(v) \
-+    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
-+
- #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
-     static void pc_machine_##suffix##_class_init(ObjectClass *oc, void *data) \
-     { \
--- 
-2.40.0
-
-
-From 3d678c86ad2dc1049840a5ca8b4f2a73b6761e24 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 20:03:36 +0200
-Subject: [PATCH 48/55] pci vendor naming patch
-
----
- include/hw/pci/pci.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
 diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
 index 6ccaaf5154..3bc8591843 100644
 --- a/include/hw/pci/pci.h
@@ -1667,19 +1044,6 @@ index 6ccaaf5154..3bc8591843 100644
  #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
  #define PCI_DEVICE_ID_REDHAT_SERIAL      0x0002
  #define PCI_DEVICE_ID_REDHAT_SERIAL2     0x0003
--- 
-2.40.0
-
-
-From c42516403105bcf593e47f698e3f6df954e4adfb Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 20:07:48 +0200
-Subject: [PATCH 49/55] FW cfg DMA signature patch
-
----
- include/standard-headers/linux/qemu_fw_cfg.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/include/standard-headers/linux/qemu_fw_cfg.h b/include/standard-headers/linux/qemu_fw_cfg.h
 index cb93f6678d..f5f97cde95 100644
 --- a/include/standard-headers/linux/qemu_fw_cfg.h
@@ -1702,19 +1066,6 @@ index cb93f6678d..f5f97cde95 100644
  
  /* Control as first field allows for different structures selected by this
   * field, which might be useful in the future
--- 
-2.40.0
-
-
-From 51025c1f437fd35810261b53362d58abb9c52c98 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 20:10:34 +0200
-Subject: [PATCH 50/55] Migration stuff patch. IDK if needed
-
----
- migration/migration.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/migration/migration.c b/migration/migration.c
 index f485eea5fb..42c6a64e3e 100644
 --- a/migration/migration.c
@@ -1737,19 +1088,6 @@ index f485eea5fb..42c6a64e3e 100644
                     " can't enable COLO");
          error_append_hint(errp, "Please enable replication before COLO.\n");
          return false;
--- 
-2.40.0
-
-
-From dc5637b9d1fae6f90e95b1e623fa08e58a18f7fa Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 20:12:04 +0200
-Subject: [PATCH 51/55] Migration RDMA stuff patch. IDK if needed
-
----
- migration/rdma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/migration/rdma.c b/migration/rdma.c
 index 94a55dd95b..cbd7a7e205 100644
 --- a/migration/rdma.c
@@ -1763,19 +1101,6 @@ index 94a55dd95b..cbd7a7e205 100644
          [RDMA_CONTROL_RAM_BLOCKS_REQUEST] = "RAM BLOCKS REQUEST",
          [RDMA_CONTROL_RAM_BLOCKS_RESULT] = "RAM BLOCKS RESULT",
          [RDMA_CONTROL_COMPRESS] = "COMPRESS",
--- 
-2.40.0
-
-
-From 26a311cb29eff17951af1de34e6ef0866a534d80 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 20:13:36 +0200
-Subject: [PATCH 52/55] PC-BIOS DMA signature patch
-
----
- pc-bios/optionrom/optionrom.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/pc-bios/optionrom/optionrom.h b/pc-bios/optionrom/optionrom.h
 index 8d74c0ddf3..49e234bc69 100644
 --- a/pc-bios/optionrom/optionrom.h
@@ -1789,20 +1114,6 @@ index 8d74c0ddf3..49e234bc69 100644
  
  #define BIOS_CFG_DMA_ADDR_HIGH  0x514
  #define BIOS_CFG_DMA_ADDR_LOW   0x518
--- 
-2.40.0
-
-
-From 88bf35e54041e5c53d005823215bcd1e097a2f7f Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 21:07:41 +0200
-Subject: [PATCH 53/55] CPU name patch
-
----
- pc-bios/s390-ccw/virtio-scsi.h | 2 +-
- target/i386/kvm/kvm.c          | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/pc-bios/s390-ccw/virtio-scsi.h b/pc-bios/s390-ccw/virtio-scsi.h
 index e6b6cd4815..d7b470924d 100644
 --- a/pc-bios/s390-ccw/virtio-scsi.h
@@ -1825,24 +1136,10 @@ index a213209379..ef5ac08d96 100644
  
      if (cpu->expose_kvm) {
 -        memcpy(signature, "KVMKVMKVM\0\0\0", 12);
-+        memcpy(signature, "GenuineIntel", 12);
++        memcpy(signature, "AuthenticAMD", 12);
          c = &cpuid_data.entries[cpuid_i++];
          c->function = KVM_CPUID_SIGNATURE | kvm_base;
          c->eax = KVM_CPUID_FEATURES | kvm_base;
--- 
-2.40.0
-
-
-From 98cb37df48362d331136df4b959595ca5ede022d Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 21:20:27 +0200
-Subject: [PATCH 54/55] Spice patch
-
----
- target/s390x/tcg/misc_helper.c | 18 +++++++++---------
- ui/spice-core.c                |  2 +-
- 2 files changed, 10 insertions(+), 10 deletions(-)
-
 diff --git a/target/s390x/tcg/misc_helper.c b/target/s390x/tcg/misc_helper.c
 index 71388a7119..9ccd8adba5 100644
 --- a/target/s390x/tcg/misc_helper.c
@@ -1905,53 +1202,3 @@ index c3ac20ad43..f541225c38 100644
      spice_server_set_uuid(spice_server, (unsigned char *)&qemu_uuid);
  
      seamless_migration = qemu_opt_get_bool(opts, "seamless-migration", 0);
--- 
-2.40.0
-
-
-From 7fbdd428f07eb0c1d1f7f968aaffe43e7f4881d6 Mon Sep 17 00:00:00 2001
-From: Samuil1337 <samuil1337@example.com>
-Date: Wed, 12 Apr 2023 23:57:05 +0200
-Subject: [PATCH 55/55] Fixed #PC_CPU_MODEL_IDS(v)
-
----
- hw/i386/pc.c         | 6 +++---
- include/hw/i386/pc.h | 5 -----
- 2 files changed, 3 insertions(+), 8 deletions(-)
-
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index ec5a10534b..1c2d18b752 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -103,9 +103,9 @@
-  * depending on QEMU versions up to QEMU 2.4.
-  */
- #define PC_CPU_MODEL_IDS(v) \
--    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
--    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
--    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
-+    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
- 
- GlobalProperty pc_compat_7_1[] = {};
- const size_t pc_compat_7_1_len = G_N_ELEMENTS(pc_compat_7_1);
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index c2b9244d01..0c76e82626 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -287,11 +287,6 @@ extern const size_t pc_compat_1_5_len;
- extern GlobalProperty pc_compat_1_4[];
- extern const size_t pc_compat_1_4_len;
- 
--#define PC_CPU_MODEL_IDS(v) \
--    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
--    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
--    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
--
- #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
-     static void pc_machine_##suffix##_class_init(ObjectClass *oc, void *data) \
-     { \
--- 
-2.40.0
-
