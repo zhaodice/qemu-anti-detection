@@ -27,7 +27,7 @@ cd ..
 mkdir qemu_build
 cd qemu_build
 ../qemu/configure --target-list=x86_64-softmmu,x86_64-linux-user --prefix=/usr
-make
+make -j $(nproc)
 sudo make install
 ```
 
