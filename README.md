@@ -1,5 +1,5 @@
 # Other Project
-For Proxmox VE(PVE) Anti Detecion, see https://github.com/zhaodice/proxmox-ve-anti-detecion
+For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-anti-detection
 
 # Qemu Anti Detection
  | Type       | Engine | Bypass |
