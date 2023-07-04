@@ -10,6 +10,7 @@ For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-a
  | AntiCheat | nProtect GameGuard(NP) | ☑️   | 
  | AntiCheat | Vanguard | ‼️(1: Incorrect function) | 
  | AntiCheat | Roblex | ‼️(The application encountered an unrecoverable error) | 
+ | AntiCheat | Gepard (https://durin-ro.com/download) | ‼️VM Code 7: Sorry, this application cannot run under virtual machine |
  | Encrypt | VMProtect | ☑️   | 
  | Encrypt | VProtect | ☑️   |  
  | Encrypt | Themida | ☑️   |  
@@ -17,6 +18,8 @@ For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-a
  | Encrypt | Safegine Shielden | ☑️   |  
 
 ‼️ There are games cannot run under this environment but I am not sure whether qemu has been detected, because the game doesn't say "Virtual machine detected" specifically. 
+
+And this game (https://durin-ro.com/download) uses a unknown detection ,shows "Sorry, this application cannot run under virtual machine"
 If you have any clue, feel free to tell me :)
 
 # Build and install qemu:
