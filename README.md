@@ -22,6 +22,8 @@ For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-a
 And this game (https://durin-ro.com/download) uses a unknown detection ,shows "Sorry, this application cannot run under virtual machine"
 If you have any clue, feel free to tell me :)
 
+Issue : https://github.com/zhaodice/proxmox-ve-anti-detection/issues/2
+
 # Build and install qemu:
 ```
 sudo apt-get update
