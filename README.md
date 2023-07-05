@@ -26,249 +26,27 @@ Issue : https://github.com/zhaodice/proxmox-ve-anti-detection/issues/2
 
 Flaws :
 ```
-[Wed Jul  5 17:58:18 2023] [*] TLS process attach callback  -> 0
-[Wed Jul  5 17:58:18 2023] [*] TLS thread attach callback  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking IsDebuggerPresent API  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking PEB.BeingDebugged  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking CheckRemoteDebuggerPresent API  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking PEB.NtGlobalFlag  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking ProcessHeap.Flags  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking ProcessHeap.ForceFlags  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking Low Fragmentation Heap -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking NtQueryInformationProcess with ProcessDebugPort  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking NtQueryInformationProcess with ProcessDebugFlags  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking NtQueryInformationProcess with ProcessDebugObject  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking WudfIsAnyDebuggerPresent API  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking WudfIsKernelDebuggerPresent API  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking WudfIsUserDebuggerPresent API  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking NtSetInformationThread with ThreadHideFromDebugger  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking CloseHandle with an invalide handle  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking UnhandledExcepFilterTest  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking OutputDebugString  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking Hardware Breakpoints  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking Software Breakpoints  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking Interupt 0x2d  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking Interupt 1  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking trap flag -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking Memory Breakpoints PAGE GUARD  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking If Parent Process is explorer.exe  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking SeDebugPrivilege  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking NtQueryObject with ObjectTypeInformation  -> 0
-[Wed Jul  5 17:58:18 2023] [*] Checking NtQueryObject with ObjectAllTypesInformation  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking NtYieldExecution  -> 1
-[Wed Jul  5 17:58:19 2023] [*] Checking CloseHandle protected handle trick   -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking NtQuerySystemInformation with SystemKernelDebuggerInformation   -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking SharedUserData->KdDebuggerEnabled   -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking if process is in a job   -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking VirtualAlloc write watch (buffer only)  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking VirtualAlloc write watch (API calls)  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking VirtualAlloc write watch (IsDebuggerPresent)  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking VirtualAlloc write watch (code write)  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking for page exception breakpoints  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Checking for API hooks outside module bounds  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Enumerating modules with EnumProcessModulesEx [32-bit]  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Enumerating modules with EnumProcessModulesEx [64-bit]  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Enumerating modules with EnumProcessModulesEx [ALL]  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Enumerating modules with ToolHelp32  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Enumerating the process LDR via LdrEnumerateLoadedModules  -> 0
-[Wed Jul  5 17:58:19 2023] [*] Enumerating the process LDR directly  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Walking process memory with GetModuleInformation  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Walking process memory for hidden modules  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: avghookx.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: avghooka.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: snxhk.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: sbiedll.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: dbghelp.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: api_log.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: dir_watch.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: pstorec.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: vmcheck.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: wpespy.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: cmdvrt64.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process loaded modules contains: cmdvrt32.dll  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: sample.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: bot.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: sandbox.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: malware.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: test.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: klavme.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: myapp.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name contains: testapp.exe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if process file name looks like a hash: al-khaser  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : CurrentUser  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : Sandbox  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : Emily  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : HAPUBWS  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : Hong Lee  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : IT-ADMIN  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : Johnson  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : Miller  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : milozs  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : Peter Wilson  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : timmy  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : user  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : sand box  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : malware  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : maltest  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : test user  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : virus  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if username matches : John Doe  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : SANDBOX  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : 7SILVIA  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : HANSPETER-PC  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : JOHN-PC  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : MUELLER-PC  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : WIN7-TRAPS  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : FORTINET  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking if hostname matches : TEQUILABOOMBOOM  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking whether username is 'Wilber' and NetBIOS name starts with 'SC' or 'SW'  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking whether username is 'admin' and NetBIOS name is 'SystemIT'  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking whether username is 'admin' and DNS hostname is 'KLONE_X64-PC'  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking whether username is 'John' and two sandbox files exist  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking whether four known sandbox 'email' file paths exist  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking whether three known sandbox 'foobar' files exist  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking Number of processors in machine  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking Interupt Descriptor Table location  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking Local Descriptor Table location  -> 1
-[Wed Jul  5 17:58:20 2023] [*] Checking Global Descriptor Table location  -> 0
-[Wed Jul  5 17:58:20 2023] [*] Checking Store Task Register  -> 0
-[Wed Jul  5 17:58:21 2023] [*] Checking Number of cores in machine using WMI  -> 0
-[Wed Jul  5 17:58:21 2023] [*] Checking hard disk size using WMI  -> 1
-[Wed Jul  5 17:58:21 2023] [*] Checking hard disk size using DeviceIoControl  -> 0
-[Wed Jul  5 17:58:21 2023] [*] Checking SetupDi_diskdrive  -> 0
-[Wed Jul  5 17:58:26 2023] [*] Checking mouse movement  -> 0
-[Wed Jul  5 17:58:26 2023] [*] Checking lack of user input  -> 0
-[Wed Jul  5 17:58:26 2023] [*] Checking memory space using GlobalMemoryStatusEx  -> 0
-[Wed Jul  5 17:58:26 2023] [*] Checking disk size using GetDiskFreeSpaceEx  -> 1
-[Wed Jul  5 17:58:26 2023] [*] Checking if CPU hypervisor field is set using cpuid(0x1) -> 0
-[Wed Jul  5 17:58:26 2023] [*] Checking hypervisor vendor using cpuid(0x40000000) -> 0
-[Wed Jul  5 17:59:26 2023] [*] Check if time has been accelerated  -> 0
-[Wed Jul  5 17:59:26 2023] [*] VM Driver Services   -> 0
-[Wed Jul  5 17:59:26 2023] [*] Checking SerialNumber from BIOS using WMI  -> 0
-[Wed Jul  5 17:59:26 2023] [*] Checking Model from ComputerSystem using WMI  -> 0
-[Wed Jul  5 17:59:26 2023] [*] Checking Manufacturer from ComputerSystem using WMI  -> 0
-[Wed Jul  5 17:59:26 2023] [*] Checking Current Temperature using WMI  -> 0
-[Wed Jul  5 17:59:27 2023] [*] Checking ProcessId using WMI  -> 0
-[Wed Jul  5 17:59:27 2023] [*] Checking power capabilities  -> 0
-[Wed Jul  5 17:59:27 2023] [*] Checking CPU fan using WMI  -> 1
-[Wed Jul  5 17:59:27 2023] [*] Checking NtQueryLicenseValue with Kernel-VMDetection-Private  -> 0
-[Wed Jul  5 17:59:27 2023] [*] Checking Win32_CacheMemory with WMI  -> 1
-[Wed Jul  5 17:59:27 2023] [*] Checking Win32_PhysicalMemory with WMI  -> 0
-[Wed Jul  5 17:59:28 2023] [*] Checking Win32_MemoryDevice with WMI  -> 1
-[Wed Jul  5 17:59:28 2023] [*] Checking Win32_MemoryArray with WMI  -> 0
-[Wed Jul  5 17:59:28 2023] [*] Checking Win32_VoltageProbe with WMI  -> 1
-[Wed Jul  5 17:59:28 2023] [*] Checking Win32_PortConnector with WMI  -> 1
-[Wed Jul  5 17:59:28 2023] [*] Checking Win32_SMBIOSMemory with WMI  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking ThermalZoneInfo performance counters with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking CIM_Memory with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking CIM_Sensor with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking CIM_NumericSensor with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking CIM_TemperatureSensor with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking CIM_VoltageSensor with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking CIM_PhysicalConnector with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking CIM_Slot with WMI  -> 1
-[Wed Jul  5 17:59:33 2023] [*] Checking if Windows is Genuine  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Services\Disk\Enum entries for VM strings  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Enum\IDE and Enum\SCSI entries for VM strings  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\Description\System - Identifier is set to VBOX -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\Description\System - SystemBiosVersion is set to VBOX -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\Description\System - VideoBiosVersion is set to VIRTUALBOX -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\Description\System - SystemBiosDate is set to 06/23/99 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking VirtualBox Guest Additions directory  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\VBoxMouse.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\VBoxGuest.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\VBoxSF.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\VBoxVideo.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxdisp.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxhook.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxmrxnp.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxogl.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxoglarrayspu.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxoglcrutil.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxoglerrorspu.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxoglfeedbackspu.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxoglpackspu.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxoglpassthroughspu.dll  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxservice.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\vboxtray.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\VBoxControl.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\ACPI\DSDT\VBOX__  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\ACPI\FADT\VBOX__  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\ACPI\RSDT\VBOX__  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SOFTWARE\Oracle\VirtualBox Guest Additions  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SYSTEM\ControlSet001\Services\VBoxGuest  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SYSTEM\ControlSet001\Services\VBoxMouse  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SYSTEM\ControlSet001\Services\VBoxService  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SYSTEM\ControlSet001\Services\VBoxSF  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SYSTEM\ControlSet001\Services\VBoxVideo  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Mac Address start with 08:00:27  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking MAC address (Hybrid Analysis)  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking device \\.\VBoxMiniRdrDN  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking device \\.\VBoxGuest  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking device \\.\pipe\VBoxMiniRdDN  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking device \\.\VBoxTrayIPC  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking device \\.\pipe\VBoxTrayIPC  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking VBoxTrayToolWndClass / VBoxTrayToolWnd  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking VirtualBox Shared Folders network provider  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking VirtualBox process vboxservice.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking VirtualBox process vboxtray.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Win32_PnPDevice DeviceId from WMI for VBox PCI device  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Win32_PnPDevice Name from WMI for VBox controller hardware  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Win32_PnPDevice Name from WMI for VBOX names  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Win32_Bus from WMI  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Win32_BaseBoard from WMI  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking MAC address from WMI  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking NTEventLog from WMI  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking SMBIOS firmware   -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking ACPI tables   -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\DEVICEMAP\Scsi\Scsi Port 0\Scsi Bus 0\Target Id 0\Logical Unit Id 0 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\DEVICEMAP\Scsi\Scsi Port 1\Scsi Bus 0\Target Id 0\Logical Unit Id 0 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\DEVICEMAP\Scsi\Scsi Port 2\Scsi Bus 0\Target Id 0\Logical Unit Id 0 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SYSTEM\ControlSet001\Control\SystemInformation -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SYSTEM\ControlSet001\Control\SystemInformation -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SOFTWARE\VMware, Inc.\VMware Tools  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmnet.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmmouse.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmusb.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vm3dmp.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmci.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmhgfs.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmmemctl.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmx86.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmrawdsk.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmusbmouse.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmkdb.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmnetuserif.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking file C:\Windows\System32\drivers\vmnetadapter.sys  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking MAC starting with 00:05:69 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking MAC starting with 00:0c:29 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking MAC starting with 00:1C:14 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking MAC starting with 00:50:56 -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking VMWare network adapter name  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking device \\.\HGFS  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking device \\.\vmci  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking VMWare directory  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking SMBIOS firmware   -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking ACPI tables   -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Virtual PC processes VMSrvc.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Virtual PC processes VMUSrvc.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SOFTWARE\Microsoft\Virtual Machine\Guest\Parameters  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\DEVICEMAP\Scsi\Scsi Port 0\Scsi Bus 0\Target Id 0\Logical Unit Id 0  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key HARDWARE\Description\System  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking qemu processes qemu-ga.exe  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking SMBIOS firmware   -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking ACPI tables   -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Citrix Xen process xenservice.exe -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Mac Address start with 08:16:3E  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Wine via dll exports  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking reg key SOFTWARE\Wine  -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Parallels processes: prl_cc.exe -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Parallels processes: prl_tools.exe -> 0
-[Wed Jul  5 17:59:33 2023] [*] Checking Mac Address start with 08:1C:42  -> 0
-[Wed Jul  5 18:09:33 2023] [*] Performing a sleep using NtDelayExecution ... -> 0
-[Wed Jul  5 18:19:34 2023] [*] Performing a sleep() in a loop ... -> 0
-[Wed Jul  5 18:39:34 2023] [*] Delaying execution using SetTimer ... -> 0
-[Wed Jul  5 18:39:34 2023] [*] Delaying execution using timeSetEvent ... -> 0
+use those commands could DETECT THIS VM (Shows "No instance available") , and NO SOLOTION CURRENTLY(I Don't know how to simulate thoses infomation..).
+
+---------------------------
+
+wmic path Win32_Fan get *
+
+wmic path Win32_CacheMemory get *
+
+wmic path Win32_VoltageProbe get *
+
+wmic path Win32_PerfFormattedData_Counters_ThermalZoneInformation get *
+
+wmic path CIM_Memory get *
+
+wmic path CIM_Sensor get *
+
+wmic path CIM_NumericSensor get *
+
+wmic path CIM_TemperatureSensor get *
+
+wmic path CIM_VoltageSensor get *
 ```
 
 # Build and install qemu:
