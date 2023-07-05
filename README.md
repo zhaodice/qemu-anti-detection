@@ -25,7 +25,7 @@ If you have any clue, feel free to tell me :)
 Issue : https://github.com/zhaodice/proxmox-ve-anti-detection/issues/2
 
 Flaws :
-'''
+```
 [Wed Jul  5 17:58:18 2023] [*] TLS process attach callback  -> 0
 [Wed Jul  5 17:58:18 2023] [*] TLS thread attach callback  -> 0
 [Wed Jul  5 17:58:18 2023] [*] Checking IsDebuggerPresent API  -> 0
@@ -269,7 +269,7 @@ Flaws :
 [Wed Jul  5 18:19:34 2023] [*] Performing a sleep() in a loop ... -> 0
 [Wed Jul  5 18:39:34 2023] [*] Delaying execution using SetTimer ... -> 0
 [Wed Jul  5 18:39:34 2023] [*] Delaying execution using timeSetEvent ... -> 0
-'''
+```
 
 # Build and install qemu:
 ```
