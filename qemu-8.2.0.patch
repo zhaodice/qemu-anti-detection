@@ -271,23 +271,6 @@ index 72a42f3c66..154b6675d8 100644
  
      /* device present, functioning, decoding, not shown in UI */
      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 3109d5e0e0..e33380f50c 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -110,9 +110,9 @@
-  * depending on QEMU versions up to QEMU 2.4.
-  */
- #define PC_CPU_MODEL_IDS(v) \
--    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
--    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
--    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
-+    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
-+    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
- 
- GlobalProperty pc_compat_8_0[] = {
-     { "virtio-mem", "unplugged-inaccessible", "auto" },
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
 index ac72e8f5be..5470aa0cc4 100644
 --- a/hw/i386/pc_piix.c
