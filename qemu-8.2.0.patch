@@ -271,6 +271,23 @@ index 72a42f3c66..154b6675d8 100644
  
      /* device present, functioning, decoding, not shown in UI */
      aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 29b9964733..cd97ebef68 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -74,9 +74,9 @@
+  * depending on QEMU versions up to QEMU 2.4.
+  */
+ #define PC_CPU_MODEL_IDS(v) \
+-    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
+-    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
+-    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
++    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
+ 
+ GlobalProperty pc_compat_8_1[] = {};
+ const size_t pc_compat_8_1_len = G_N_ELEMENTS(pc_compat_8_1);
 diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
 index ac72e8f5be..5470aa0cc4 100644
 --- a/hw/i386/pc_piix.c
