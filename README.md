@@ -62,6 +62,10 @@ cd qemu_build
 make -j $(nproc)
 sudo make install
 ```
+# DRIVER CODE 43 
+
+see https://github.com/zhaodice/qemu-anti-detection/issues/48
+
 
 # QEMU XML Config
 
