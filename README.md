@@ -9,7 +9,7 @@ For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-a
  | AntiCheat | Easy Anti Cheat(EAC) | ☑️   | 
  | AntiCheat | nProtect GameGuard(NP) | ☑️   | 
  | AntiCheat | Vanguard | ‼️(1: Incorrect function) | 
- | AntiCheat | Roblox | ‼️(The application encountered an unrecoverable error) | 
+ | AntiCheat | Roblox | ☑️ May Work: https://github.com/zhaodice/qemu-anti-detection/issues/56 | 
  | AntiCheat | Gepard Shield | ☑️ (But need to patch host kernel: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
  | Encrypt | VMProtect | ☑️   | 
  | Encrypt | VProtect | ☑️   |  
