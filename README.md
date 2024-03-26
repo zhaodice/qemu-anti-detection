@@ -63,10 +63,6 @@ git apply ../qemu-anti-detection/qemu-8.2.0.patch
 ./configure
 sudo make install -j$(nproc)
 ```
-# DRIVER CODE 43 
-
-see https://github.com/zhaodice/qemu-anti-detection/issues/48
-
 
 # QEMU XML Config
 
