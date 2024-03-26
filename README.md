@@ -3,7 +3,7 @@ For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-a
 
 # QEMU Anti Detection
 A patch for various QEMU versions that aims to prevent VM detection methods based on data reported by the emulator. The "QEMU keyboard" for example is then renamed to "ASUS keyboard". Serial numbers, the VM bit in the guest's UEFI and the Boot Graphics Record Table are also modified. 
-However, this is not a silver bullet, because of timing based attacks like RDTSC, [which is reported incorrectly in a VM](https://github.com/WCharacter/RDTSC-KVM-Handler). 
+However, because of timing based attacks like RDTSC, [which is reported incorrectly in a VM](https://github.com/WCharacter/RDTSC-KVM-Handler), this is not a silver bullet. 
 But changing this information of the virtual devices is still an integral part of creating an undetected virutal machine. 
 
  | Type       | Engine | Bypass |
@@ -25,7 +25,7 @@ But changing this information of the virtual devices is still an integral part o
 If you have any clue, feel free to tell me :)
 
 ### Flaws this patch does not fix in QEMU's source:
-Those commands result in "No instance available" and could therefore EXPOSE THE VM. We do not yet know how to simulate this data.
+These commands exit with "No instance(s) available" and could therefore EXPOSE THE VM. We do not yet know how to simulate this data.
 ```
 wmic path Win32_Fan get *
 
@@ -47,7 +47,7 @@ wmic path CIM_VoltageSensor get *
 ```
 
 ## Build Dependencies
-⚠️ _You should always keep an official installation of QEMU, because your package manager may delete necessary runtime dependencies otherwise! The binaries you compile are saved in **/usr/local/bin**, so they will take precedence._
+⚠️ _Always maintain an installation of QEMU managed by your package manager, because it may delete necessary runtime dependencies otherwise! The binaries you compile are saved in **/usr/local/bin**, so they will take precedence._
 
 **Arch**:
 `sudo pacman -S git wget ninja python base-devel`
