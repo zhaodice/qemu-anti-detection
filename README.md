@@ -1,33 +1,28 @@
-# Other Project
+## Other Project
 For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-anti-detection
 
-# Qemu Anti Detection
+# QEMU Anti Detection
  | Type       | Engine | Bypass |
  |------------|--------|--------|
- | AntiCheat | Mhyprot | ☑️   |
- | AntiCheat | Anti Cheat Expert(ACE) | ☑️   |
- | AntiCheat | Easy Anti Cheat(EAC) | ☑️   | 
- | AntiCheat | nProtect GameGuard(NP) | ☑️   | 
- | AntiCheat | Vanguard | ‼️(1: Incorrect function) | 
- | AntiCheat | Roblox | ☑️ May Work: https://github.com/zhaodice/qemu-anti-detection/issues/56 | 
- | AntiCheat | Gepard Shield | ☑️ (But need to patch host kernel: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
- | Encrypt | VMProtect | ☑️   | 
- | Encrypt | VProtect | ☑️   |  
- | Encrypt | Themida | ☑️   |  
- | Encrypt | Enigma Protector | ☑️   |  
- | Encrypt | Safegine Shielden | ☑️   |  
+ | AntiCheat  | Anti Cheat Expert (ACE) | ☑️ |
+ | AntiCheat  | Easy Anti Cheat (EAC) | ☑️ | 
+ | AntiCheat  | Gepard Shield | ☑️ (But need to patch host kernel: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
+ | AntiCheat  | Mhyprot | ☑️ |
+ | AntiCheat  | nProtect GameGuard (NP) | ☑️ | 
+ | AntiCheat  | Roblox | ☑️ May Work with Hyper-V in the guest: https://github.com/zhaodice/qemu-anti-detection/issues/56 | 
+ | AntiCheat  | Vanguard | ‼️(1: Incorrect function) | 
+ | Encrypt    | Enigma Protector | ☑️ | 
+ | Encrypt    | Safegine Shielden | ☑️ |
+ | Encrypt    | Themida | ☑️ |
+ | Encrypt    | VMProtect | ☑️ | 
+ | Encrypt    | VProtect | ☑️ |       
 
-‼️ There are games cannot run under this environment but I am not sure whether qemu has been detected, because the game doesn't say "Virtual machine detected" specifically. 
+‼️ There are games that cannot run under this environment but I am not sure whether QEMU has been detected, because the game doesn't report "Virtual machine detected" specifically. 
 If you have any clue, feel free to tell me :)
 
-Issue : https://github.com/zhaodice/proxmox-ve-anti-detection/issues/2 (resolved)
-
-Flaws :
+### Flaws this patch does not fix in QEMU's source:
+Those commands result in "No instance available" and could therefore EXPOSE THE VM. We do not yet know how to simulate this data.
 ```
-use those commands could DETECT THIS VM (Shows "No instance available") , and NO SOLOTION CURRENTLY(I Don't know how to simulate thoses infomation..).
-
----------------------------
-
 wmic path Win32_Fan get *
 
 wmic path Win32_CacheMemory get *
