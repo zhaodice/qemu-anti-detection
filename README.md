@@ -46,7 +46,9 @@ wmic path CIM_TemperatureSensor get *
 wmic path CIM_VoltageSensor get *
 ```
 
-## Dependencies
+## Build Dependencies
+⚠️ _You should always keep an official installation of QEMU, because your package manager may delete necessary runtime dependencies otherwise! The binaries you compile are saved in **/usr/local/bin**, so they will take precedence._
+
 **Arch**:
 `sudo pacman -S git wget ninja python base-devel`
 
