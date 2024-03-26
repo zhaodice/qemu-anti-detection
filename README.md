@@ -10,10 +10,10 @@ But changing this information of the virtual devices is still an integral part o
  |------------|--------|--------|
  | AntiCheat  | Anti Cheat Expert (ACE) | ☑️ |
  | AntiCheat  | Easy Anti Cheat (EAC) | ☑️ | 
- | AntiCheat  | Gepard Shield | ☑️ (But need to patch host kernel: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
+ | AntiCheat  | Gepard Shield | ☑️ (Needs patched kernel on host: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
  | AntiCheat  | Mhyprot | ☑️ |
  | AntiCheat  | nProtect GameGuard (NP) | ☑️ | 
- | AntiCheat  | Roblox | ☑️ May Work with Hyper-V in the guest: https://github.com/zhaodice/qemu-anti-detection/issues/56 | 
+ | AntiCheat  | Roblox | ☑️ May work with Hyper-V in the guest: https://github.com/zhaodice/qemu-anti-detection/issues/56 | 
  | AntiCheat  | Vanguard | ‼️(1: Incorrect function) | 
  | Encrypt    | Enigma Protector | ☑️ | 
  | Encrypt    | Safegine Shielden | ☑️ |
