@@ -72,7 +72,7 @@ see https://github.com/zhaodice/qemu-anti-detection/issues/48
 
 # QEMU XML Config
 
-Record your VIRTUAL MACHINE's uuid.
+Insert YOUR virtual machine's uuid.
 ```
 <domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">
   <name>Entertainment</name>
@@ -92,6 +92,7 @@ Record your VIRTUAL MACHINE's uuid.
   <os firmware="efi">
     <type arch="x86_64" machine="pc-q35-7.0">hvm</type>
     <loader/>
+    <smbios mode="host"/>
   </os>
   <features>
     <acpi/>
@@ -109,7 +110,9 @@ Record your VIRTUAL MACHINE's uuid.
     <smm state="on"/>
     <ioapic driver="kvm"/>
   </features>
-  <cpu mode="host-model" check="partial"/>
+  <cpu mode="host-passthrough" check="none" migratable="on">
+    <feature policy="disable" name="hypervisor"/>
+  </cpu>
   <clock offset="localtime">
     <timer name="rtc" tickpolicy="catchup"/>
     <timer name="pit" tickpolicy="delay"/>
