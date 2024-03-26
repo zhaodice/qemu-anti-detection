@@ -2,6 +2,10 @@
 For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-anti-detection
 
 # QEMU Anti Detection
+A patch for various QEMU versions that aims to prevent VM detection methods based on data reported by the emulator. The "QEMU keyboard" for example is then renamed to "ASUS keyboard". Serial numbers, the VM bit in the guest's UEFI and the Boot Graphics Record Table are also modified. 
+However, this is not a silver bullet, because of timing based attacks like RDTSC, [which is reported incorrectly in a VM](https://github.com/WCharacter/RDTSC-KVM-Handler). 
+But changing this information of the virtual devices is still an integral part of creating an undetected virutal machine. 
+
  | Type       | Engine | Bypass |
  |------------|--------|--------|
  | AntiCheat  | Anti Cheat Expert (ACE) | ☑️ |
