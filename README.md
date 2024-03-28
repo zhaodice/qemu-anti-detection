@@ -1,33 +1,32 @@
-# Other Project
+## Other Project
 For Proxmox VE(PVE) Anti Detection, see https://github.com/zhaodice/proxmox-ve-anti-detection
 
-# Qemu Anti Detection
+# QEMU Anti Detection
+A patch for various QEMU versions that aims to prevent VM detection methods based on data reported by the emulator. The "QEMU keyboard" for example is then renamed to "ASUS keyboard". Serial numbers, the VM bit in the guest's UEFI and the Boot Graphics Record Table are also modified. 
+However, because of timing based attacks like RDTSC, [which is reported incorrectly in a VM](https://github.com/WCharacter/RDTSC-KVM-Handler), this is not a silver bullet. 
+But changing this information of the virtual devices is still an integral part of creating an undetected virutal machine. 
+
  | Type       | Engine | Bypass |
  |------------|--------|--------|
- | AntiCheat | Mhyprot | ☑️   |
- | AntiCheat | Anti Cheat Expert(ACE) | ☑️   |
- | AntiCheat | Easy Anti Cheat(EAC) | ☑️   | 
- | AntiCheat | nProtect GameGuard(NP) | ☑️   | 
- | AntiCheat | Vanguard | ‼️(1: Incorrect function) | 
- | AntiCheat | Roblox | ☑️ May Work: https://github.com/zhaodice/qemu-anti-detection/issues/56 | 
- | AntiCheat | Gepard Shield | ☑️ (But need to patch host kernel: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
- | Encrypt | VMProtect | ☑️   | 
- | Encrypt | VProtect | ☑️   |  
- | Encrypt | Themida | ☑️   |  
- | Encrypt | Enigma Protector | ☑️   |  
- | Encrypt | Safegine Shielden | ☑️   |  
+ | AntiCheat  | Anti Cheat Expert (ACE) | ☑️ |
+ | AntiCheat  | Easy Anti Cheat (EAC) | ☑️ | 
+ | AntiCheat  | Gepard Shield | ☑️ (Needs patched kernel on host: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
+ | AntiCheat  | Mhyprot | ☑️ |
+ | AntiCheat  | nProtect GameGuard (NP) | ☑️ | 
+ | AntiCheat  | Roblox | ☑️ May work with Hyper-V in the guest: https://github.com/zhaodice/qemu-anti-detection/issues/56 | 
+ | AntiCheat  | Vanguard | ‼️(1: Incorrect function) | 
+ | Encrypt    | Enigma Protector | ☑️ | 
+ | Encrypt    | Safegine Shielden | ☑️ |
+ | Encrypt    | Themida | ☑️ |
+ | Encrypt    | VMProtect | ☑️ | 
+ | Encrypt    | VProtect | ☑️ |       
 
-‼️ There are games cannot run under this environment but I am not sure whether qemu has been detected, because the game doesn't say "Virtual machine detected" specifically. 
+‼️ There are games that cannot run under this environment but I am not sure whether QEMU has been detected, because the game doesn't report "Virtual machine detected" specifically. 
 If you have any clue, feel free to tell me :)
 
-Issue : https://github.com/zhaodice/proxmox-ve-anti-detection/issues/2 (resolved)
-
-Flaws :
+### Flaws this patch does not fix in QEMU's source:
+These commands exit with "No instance(s) available" and could therefore EXPOSE THE VM. We do not yet know how to simulate this data.
 ```
-use those commands could DETECT THIS VM (Shows "No instance available") , and NO SOLOTION CURRENTLY(I Don't know how to simulate thoses infomation..).
-
----------------------------
-
 wmic path Win32_Fan get *
 
 wmic path Win32_CacheMemory get *
@@ -47,29 +46,29 @@ wmic path CIM_TemperatureSensor get *
 wmic path CIM_VoltageSensor get *
 ```
 
-# Build and install qemu:
+## Build Dependencies
+⚠️ _Always maintain an installation of QEMU managed by your package manager, because it may delete necessary runtime dependencies otherwise! The binaries you compile are saved in **/usr/local/bin**, so they will take precedence._
+
+**Arch**:
+`sudo pacman -S git wget base-devel glib2 ninja python`
+
+**Ubuntu**:
+`sudo apt install git build-essential ninja-build python-venv libglib2.0-0 flex bison`
+
+## Patching and building QEMU
 ```
-sudo apt-get update
-sudo apt-get update  && sudo apt-get install -y     binutils-mingw-w64     binutils-mingw-w64-i686     binutils-mingw-w64-x86-64     build-essential     clang     g++-mingw-w64     g++-mingw-w64-i686     g++-mingw-w64-x86-64     gcc-mingw-w64     gcc-mingw-w64-i686     gcc-mingw-w64-x86-64     git     git-email     gnutls-bin     libaio-dev     libbluetooth-dev     libbrlapi-dev     libbz2-dev     libcacard-dev     libcap-dev     libcap-ng-dev     libcurl4-gnutls-dev     libibverbs-dev     libiscsi-dev     libfdt-dev     libglib2.0-dev     libgtk-3-dev     libjpeg8-dev     liblzo2-dev     libncurses5-dev     libncursesw5-dev     libnfs-dev     libnuma-dev     libpam0g-dev     libpixman-1-dev     librbd-dev     librdmacm-dev     libsasl2-dev     libsdl1.2-dev     libsdl2-dev     libsdl2-image-dev     libseccomp-dev     libsnappy-dev     libssh2-1-dev     libusb-1.0-0-dev     libusb-dev     libvde-dev     libvdeplug-dev     libvirglrenderer-dev     libvte-2.91-dev     libxen-dev     libxml2-dev     libz-mingw-w64-dev     libzstd-dev     ninja-build     valgrind     win-iconv-mingw-w64-dev     xfslibs-dev     zlib1g-dev libspice-protocol-dev libspice-server-dev libusbredirparser-dev libusbredirparser1
-
-git clone https://gitlab.com/qemu-project/qemu/ -b v7.0.0 --depth 1 --recursive
-cd qemu
-git apply qemu7.0.0.patch
-cd ..
-mkdir qemu_build
-cd qemu_build
-../qemu/configure --target-list=x86_64-softmmu,x86_64-linux-user --prefix=/usr
-make -j $(nproc)
-sudo make install
+git clone https://github.com/zhaodice/qemu-anti-detection.git
+wget https://download.qemu.org/qemu-8.2.2.tar.xz
+tar xvJf qemu-8.2.2.tar.xz
+cd qemu-8.2.2
+git apply ../qemu-anti-detection/qemu-8.2.0.patch
+./configure
+sudo make install -j$(nproc)
 ```
-# DRIVER CODE 43 
-
-see https://github.com/zhaodice/qemu-anti-detection/issues/48
-
 
 # QEMU XML Config
 
-Record your VIRTUAL MACHINE's uuid.
+Insert YOUR virtual machine's uuid.
 ```
 <domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">
   <name>Entertainment</name>
@@ -89,6 +88,7 @@ Record your VIRTUAL MACHINE's uuid.
   <os firmware="efi">
     <type arch="x86_64" machine="pc-q35-7.0">hvm</type>
     <loader/>
+    <smbios mode="host"/>
   </os>
   <features>
     <acpi/>
@@ -106,7 +106,9 @@ Record your VIRTUAL MACHINE's uuid.
     <smm state="on"/>
     <ioapic driver="kvm"/>
   </features>
-  <cpu mode="host-model" check="partial"/>
+  <cpu mode="host-passthrough" check="none" migratable="on">
+    <feature policy="disable" name="hypervisor"/>
+  </cpu>
   <clock offset="localtime">
     <timer name="rtc" tickpolicy="catchup"/>
     <timer name="pit" tickpolicy="delay"/>

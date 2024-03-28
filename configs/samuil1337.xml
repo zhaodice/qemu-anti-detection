@@ -1,0 +1,127 @@
+<!-- DO NOT BLINDLY COPY AND PASTE BUT WORK SECTION BY SECTION AND ADJUST TO YOUR HARDWARE -->
+<domain type="kvm">
+  <name>win10</name>
+  <uuid>577ecb18-ed58-4c15-ab27-a7df6cb14b2e</uuid>
+  <metadata>
+    <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
+      <libosinfo:os id="http://microsoft.com/win/10"/>
+    </libosinfo:libosinfo>
+  </metadata>
+  <!-- You should keep the RAM amount at a realistic value: 16, 12, 8, 6, 4 GiB are all more or less common -->
+  <memory unit="GiB">12</memory>
+  <currentMemory unit="GiB">12</currentMemory>
+  <vcpu placement="static">16</vcpu>
+  <!-- Adjust according to your CPU's topology: https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#CPU_pinning -->
+  <cputune>
+    <vcpupin vcpu="0" cpuset="4"/>
+    <vcpupin vcpu="1" cpuset="12"/>
+    <vcpupin vcpu="2" cpuset="5"/>
+    <vcpupin vcpu="3" cpuset="13"/>
+    <vcpupin vcpu="4" cpuset="6"/>
+    <vcpupin vcpu="5" cpuset="14"/>
+    <vcpupin vcpu="6" cpuset="7"/>
+    <vcpupin vcpu="7" cpuset="15"/>
+    <vcpupin vcpu="8" cpuset="2"/>
+    <vcpupin vcpu="9" cpuset="10"/>
+    <vcpupin vcpu="10" cpuset="3"/>
+    <vcpupin vcpu="11" cpuset="11"/>
+  </cputune>
+  <!-- Adjust to your mainboard/output of "dmidecode -t [section]" -->
+  <sysinfo type="smbios">
+    <bios>
+      <entry name="vendor">American Megatrends Inc.</entry>
+      <entry name="version">5302</entry>
+      <entry name="date">10/20/2023</entry>
+      <entry name="release">5.17</entry>
+    </bios>
+    <system>
+      <entry name="manufacturer">System manufacturer</entry>
+      <entry name="product">System Product Name</entry>
+      <entry name="version">System Version</entry>
+      <entry name="serial">System Serial Number</entry>
+      <entry name="uuid">577ecb18-ed58-4c15-ab27-a7df6cb14b2e</entry>
+      <entry name="sku">SKU</entry>
+      <entry name="family">To be filled by O.E.M.</entry>
+    </system>
+    <baseBoard>
+      <entry name="manufacturer">ASUSTeK COMPUTER INC.</entry>
+      <entry name="product">ROG STRIX B450-F GAMING</entry>
+      <entry name="version">1.xx</entry>
+      <entry name="serial">212451831070374</entry>
+      <entry name="asset">Default string</entry>
+      <entry name="location">Default string</entry>
+    </baseBoard>
+    <chassis>
+      <entry name="manufacturer">Default string</entry>
+      <entry name="version">Default string</entry>
+      <entry name="serial">Default string</entry>
+      <entry name="asset">Default string</entry>
+      <entry name="sku">Default string</entry>
+    </chassis>
+    <oemStrings>
+      <entry>String 1: Default string</entry>
+      <entry>String 2: Default string</entry>
+      <entry>String 3: MANASLU</entry>
+      <entry>String 4: Default string</entry>
+    </oemStrings>
+  </sysinfo>
+  <os firmware="efi">
+    <type arch="x86_64" machine="pc-q35-8.2">hvm</type>
+    <firmware>
+      <feature enabled="no" name="enrolled-keys"/>
+      <feature enabled="no" name="secure-boot"/>
+    </firmware>
+    <loader readonly="yes" type="pflash">/usr/share/edk2/x64/OVMF_CODE.fd</loader>
+    <nvram template="/usr/share/edk2/x64/OVMF_VARS.fd">/var/lib/libvirt/qemu/nvram/win10_VARS.fd</nvram>
+    <!-- Applies the SMBIOS values from the sysinfo section to make them more realistic for AC -->
+    <smbios mode="sysinfo"/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <hyperv mode="passthrough">
+      <relaxed state="on"/>
+      <vapic state="on"/>
+      <spinlocks state="on" retries="8191"/>
+      <vendor_id state="on" value="AuthenticAMD"/>
+      <!-- Add further enlightenments, if you want Hyper-V for further protection: https://libvirt.org/formatdomain.html#hypervisor-features -->
+    </hyperv>
+    <kvm>
+      <hidden state="on"/>
+    </kvm>
+  </features>
+  <cpu mode="host-passthrough" check="none" migratable="on">
+    <topology sockets="1" dies="1" clusters="1" cores="8" threads="2"/>
+    <cache mode="passthrough"/>
+    <!-- Keep "topoext" on AMD, change to "vmx" on Intel -->
+    <feature policy="require" name="topoext"/>
+    <feature policy="disable" name="hypervisor"/>
+  </cpu>
+  <clock offset="localtime">
+    <timer name="hpet" present="yes"/>
+    <timer name="hypervclock" present="yes"/>
+  </clock>
+  <!-- Other settings -->
+  <devices>
+    <emulator>/usr/local/bin/qemu-system-x86_64</emulator>
+    <!-- If you have a second drive and a little bit of luck,
+     you could pass through the SATA controller and have better performance than VirtIO + stay hidden -->
+    <disk type="file" device="disk"> <!-- Use block devices (partitons) for better performance -->
+      <driver name="qemu" type="raw" cache="none" io="native" discard="unmap"/> <!-- use io="threads" in block mode: https://events19.lfasiallc.com/wp-content/uploads/2017/11/Storage-Performance-Tuning-for-FAST-Virtual-Machines_Fam-Zheng.pdf -->
+      <source file="/var/lib/libvirt/images/win10.img"/>
+      <!-- Use SATA to avoid using the VirtIO driver -->
+      <target dev="sda" bus="sata"/>
+      <serial>590347474223828</serial>
+      <boot order="1"/>
+      <address type="drive" controller="0" bus="0" target="0" unit="0"/>
+    </disk>
+    <interface type="network">
+      <!-- Use a non-default mac that starts with 00: or f0: -->
+      <mac address="f0:bc:8e:cd:6e:ec"/>
+      <source network="default"/>
+      <!-- Again, don't use VirtIO -->
+      <model type="e1000e"/>
+      <address type="pci" domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
+    </interface>
+    <!-- Other devices -->
+</domain>
