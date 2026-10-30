@@ -233,9 +233,9 @@ index 48e153c93..03b494404 100644
 -    { "qemu32-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
 -    { "qemu64-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },\
 -    { "athlon-" TYPE_X86_CPU, "model-id", "QEMU Virtual CPU version " v, },
-+    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version  v, },\
-+    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version  v, },\
-+    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version  v, },
++    { "asus32-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "asus64-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },\
++    { "athlon-" TYPE_X86_CPU, "model-id", "ASUS Real CPU version " v, },
  
  GlobalProperty pc_compat_10_1[] = {
      { "mch", "extended-tseg-mbytes", "16" },
@@ -1157,6 +1157,20 @@ index 60c798113..da6d4c695 100644
          c = &cpuid_data.entries[cpuid_i++];
          c->function = KVM_CPUID_SIGNATURE | kvm_base;
          c->eax = KVM_CPUID_FEATURES | kvm_base;
+@@ -3390,6 +3390,13 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         }
+     }
+ 
++    /* Stop KVM rewriting guest vmcall/vmmcall opcodes (guest #PF/BSOD 0xBE on read-only kernel pages) */
++    if (kvm_vm_check_extension(s, KVM_CAP_DISABLE_QUIRKS2) &&
++        kvm_vm_enable_cap(s, KVM_CAP_DISABLE_QUIRKS2, 0,
++                          KVM_X86_QUIRK_FIX_HYPERCALL_INSN)) {
++        warn_report("kvm: failed to disable hypercall quirk");
++    }
++
+     return 0;
+ }
+ 
 diff --git a/target/s390x/tcg/misc_helper.c b/target/s390x/tcg/misc_helper.c
 index 215b5b9d9..e454f4146 100644
 --- a/target/s390x/tcg/misc_helper.c
