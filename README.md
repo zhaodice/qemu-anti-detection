@@ -46,8 +46,8 @@ wmic path CIM_TemperatureSensor get *
 wmic path CIM_VoltageSensor get *
 ```
 
-### Mhyprot / Genshin Impact: hypercall note (QEMU 10.2.2 patch)
-Recent Genshin Impact builds crash the guest (`0xBE ATTEMPTED_WRITE_TO_READONLY_MEMORY`) shortly after launch. The anti-cheat executes `vmcall`/`vmmcall` in kernel mode, and KVM's `KVM_X86_QUIRK_FIX_HYPERCALL_INSN` quirk answers by rewriting the instruction bytes in guest memory, which is a write to a read-only kernel page. `qemu-10.2.2.patch` now disables that quirk. For the guest to also see the #UD that real hardware would raise, the host needs a small module that makes `kvm_emulate_hypercall` inject #UD (a kprobe/ftrace hook that redirects it to `kvm_queue_exception(vcpu, UD_VECTOR)`)). One is available at https://github.com/Luigi-Pizzolito/qemu-mhyprot2-patch, together with this patch and a build script.
+### Mhyprot / Genshin Impact: hypercall note (QEMU 10.2.2 and 11.1.3 patches)
+Recent Genshin Impact builds crash the guest (`0xBE ATTEMPTED_WRITE_TO_READONLY_MEMORY`) shortly after launch. The anti-cheat executes `vmcall`/`vmmcall` in kernel mode, and KVM's `KVM_X86_QUIRK_FIX_HYPERCALL_INSN` quirk answers by rewriting the instruction bytes in guest memory, which is a write to a read-only kernel page. `qemu-10.2.2.patch` and `qemu-11.1.3.patch` disable that quirk. For the guest to also see the #UD that real hardware would raise, the host needs a small module that makes `kvm_emulate_hypercall` inject #UD (a kprobe/ftrace hook that redirects it to `kvm_queue_exception(vcpu, UD_VECTOR)`)). One is available at https://github.com/Luigi-Pizzolito/qemu-mhyprot2-patch, together with this patch and a build script.
 
 ## Build Dependencies
 ⚠️ _Always maintain an installation of QEMU managed by your package manager, because it may delete necessary runtime dependencies otherwise! The binaries you compile are saved in **/usr/local/bin**, so they will take precedence._
@@ -80,6 +80,7 @@ sudo make install -j$(nproc)
 | qemu-8.1.0.patch | 8.1.x |
 | qemu-8.2.0.patch | 8.2.x |
 | qemu-10.2.2.patch | 10.2.x |
+| qemu-11.1.3.patch | 11.1.x |
 
 # QEMU XML Config
 
